@@ -4,7 +4,7 @@ machines = {
         label = "Macerator",
         start_tier = 1,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -21,7 +21,7 @@ machines = {
         label = "Cutting Machine",
         start_tier = 1,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -86,7 +86,7 @@ machines = {
         label = "Separator",
         start_tier = 2,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -125,7 +125,7 @@ machines = {
         },
         start_tier = 1,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -246,6 +246,7 @@ machines = {
     {
         name = "Chest",
         label = "Chest",
+        block_logic = "Chest",
         start_tier = 0,
         end_tier = 10,
         tag = "Logistics",
@@ -259,6 +260,7 @@ machines = {
             Vec3i.new(0, 0, 1), 
             Vec3i.new(-1, 0, 1)
         },
+        block_logic = "ItemRack",
         start_tier = 1,
         end_tier = 10,
         tag = "Logistics",
@@ -301,7 +303,7 @@ machines = {
         },
         start_tier = 2,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -316,6 +318,7 @@ machines = {
     {
         name = "Conveyor",
         label = "Conveyor",
+        block_logic = "Conveyor",
         start_tier = 1,
         end_tier = 10,
         common_text_keys = {"Conveyor", "Transporter"},
@@ -326,6 +329,7 @@ machines = {
     {
         name = "Splitter",
         label = "Splitter",
+        block_logic = "Splitter",
         start_tier = 1,
         end_tier = 10,
         description = {"Splitter"},
@@ -334,6 +338,7 @@ machines = {
     {
         name = "Sorter",
         label = "Sorter",
+        block_logic = "Sorter",
         start_tier = 2,
         end_tier = 10,
         description = {"Splitter", "Sorter"},
@@ -414,6 +419,7 @@ machines = {
     {
         name = "CombustionEngine",
         label = "Combustion Engine",
+        logic = AutoCrafter,
         start_tier = 2,
         end_tier = 10,
         description = {"FluidInput", "KineticOutput"},
@@ -574,6 +580,7 @@ machines = {
     {
         name = "RobotArm",
         label = "Robot Arm",
+        block_logic = "RobotArm",
         start_tier = 1,
         end_tier = 10,
         selector = "/Game/Blocks/ArrowBP.ArrowBP_C",
@@ -583,6 +590,7 @@ machines = {
         name = "FilteringRobotArm",
         label = "Filtering Robot Arm",
         start_tier = 1,
+        block_logic = "FilteringRobotArm",
         end_tier = 10,
         selector = "/Game/Blocks/ArrowBP.ArrowBP_C",
         tag = "Logistics",
@@ -591,6 +599,7 @@ machines = {
     {
         name = "Pump",
         label = "Pump",
+        block_logic = "Pump",
         start_tier = 1,
         end_tier = 10,
         custom_data = {item_portion = 1000},
@@ -601,6 +610,7 @@ machines = {
     {
         name = "FilteringPump",
         label = "Filtering Pump",
+        block_logic = "FilteringPump",
         start_tier = 1,
         end_tier = 10,
         custom_data = {item_portion = 1000},
@@ -613,7 +623,7 @@ machines = {
         label = "Smelter",
         start_tier = 0,
         end_tier = 2,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -765,7 +775,7 @@ machines = {
         },
         start_tier = 4,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -853,7 +863,7 @@ machines = {
         },
         start_tier = 2,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -914,7 +924,7 @@ machines = {
         },
         start_tier = 3,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -958,7 +968,7 @@ machines = {
         label = "Furnace",
         start_tier = 0,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -1004,7 +1014,7 @@ machines = {
         },
         start_tier = 1,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         description = {"SpeedBonus"},
     },
     {
@@ -1058,7 +1068,7 @@ machines = {
         label = "Fluid Furnace",
         start_tier = 1,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
  		local crafter = current_block_logic()
 		
@@ -1108,6 +1118,7 @@ machines = {
             base_capacity = 1000000,
             bonus_capacity = 1000000,
         },
+        block_logic = "BatteryBox",
     },
     {
         name = "SmallBattery",
@@ -1126,6 +1137,7 @@ machines = {
         label = "Portal",
         start_tier = 7,
         end_tier = 10,
+        block_logic = "Portal",
         positions = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(-1, 0, 0),
@@ -1405,6 +1417,7 @@ machines = {
     {
         name = "DrillingRig",
         label = "Drilling Rig",
+        block_logic = "DrillingRig",
         positions = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(-1, 0, 0),
@@ -1569,7 +1582,7 @@ local 		local a = crafter:create_accessor(electric_input)
         },
         start_tier = 1,
         end_tier = 10,
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
 local 		local crafter = current_block_logic()
 		
@@ -1630,6 +1643,7 @@ local 		local a = crafter:create_accessor(fluid_input)
     {
         name = "AdminElectricGenerator",
         label = "Creative Electric Generator",
+        block_logic = "AdminElectricGenerator",
         start_tier = 7,
         end_tier = 7,
         craftable = false,
@@ -1638,6 +1652,7 @@ local 		local a = crafter:create_accessor(fluid_input)
     {
         name = "AdminItemGenerator",
         label = "Creative Item Generator",
+        block_logic = "AdminItemGenerator",
         start_tier = 7,
         end_tier = 7,
         craftable = false,
@@ -1646,6 +1661,7 @@ local 		local a = crafter:create_accessor(fluid_input)
     {
         name = "AdminKineticGenerator",
         label = "Creative Kinetic Generator",
+        block_logic = "AdminKineticGenerator",
         start_tier = 7,
         end_tier = 7,
         craftable = false,
@@ -1654,6 +1670,7 @@ local 		local a = crafter:create_accessor(fluid_input)
     {
         name = "AdminHeatGenerator",
         label = "Creative Heat Generator",
+        block_logic = "AdminHeatGenerator",
         start_tier = 7,
         end_tier = 7,
         craftable = false,
@@ -1661,6 +1678,7 @@ local 		local a = crafter:create_accessor(fluid_input)
     },
     {
         name = "AdminFluidGenerator",
+        block_logic = "AdminFluidGenerator",
         label = "Creative Fluid Generator",
         start_tier = 7,
         end_tier = 7,
@@ -1669,6 +1687,7 @@ local 		local a = crafter:create_accessor(fluid_input)
     },
     {
         name = "AdminExterminator",
+        block_logic = "AdminExterminator",
         label = "Creative Exterminator",
         start_tier = 7,
         end_tier = 7,
@@ -1995,7 +2014,7 @@ local 		local crafter = current_block_logic()
         start_tier = 3,
         end_tier = 10,
         common_text_keys = {"Separator", "Autocrafter"},
-        block_logic = "AutoCrafter",
+        logic = AutoCrafter,
         block_creation = [[
 local 		local crafter = current_block_logic()
 		
@@ -2024,6 +2043,7 @@ local 		local crafter = current_block_logic()
     {
         name = "Diode",
         label = "Diode",
+        block_logic = "Diode",
         start_tier = 2,
         end_tier = 10,
         description = {"ElectricInput", "ElectricOutput"},
@@ -2451,6 +2471,7 @@ local 		local a = crafter:create_accessor(electric_output)
     {
         name = "Pumpjack",
         label = "Pumpjack",
+        block_logic = "Pumpjack",
         positions = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(-1, 0, 0),
@@ -2707,6 +2728,7 @@ local 		local a = crafter:create_accessor(electric_output)
     {
         name = "CreativeController",
         label = "Creative Controller",
+        block_logic = "CreativeController",
         start_tier = 7,
         end_tier = 7,
         description = {"DataInput", "DataOutput"},
@@ -2714,6 +2736,7 @@ local 		local a = crafter:create_accessor(electric_output)
     {
         name = "LogicCircuit",
         label = "Logic Circuit",
+        block_logic = "LogicCircuit",
         start_tier = 2,
         end_tier = 2,
         description = {"DataInput", "DataOutput"},
@@ -2721,12 +2744,14 @@ local 		local a = crafter:create_accessor(electric_output)
     {
         name = "LogicInterface",
         label = "Logic Interface",
+        block_logic = "LogicInterface",
         start_tier = 2,
         end_tier = 2,
         description = {"DataOutput"},
     },
     {
         name = "LogicController",
+        block_logic = "LogicController",
         label = "Logic Controller",
         start_tier = 2,
         end_tier = 2,
@@ -2734,6 +2759,7 @@ local 		local a = crafter:create_accessor(electric_output)
     },
     {
         name = "LogicDisplay",
+        block_logic = "LogicDisplay",
         label = "Logic Display",
         start_tier = 2,
         end_tier = 2,
@@ -2750,12 +2776,14 @@ local 		local a = crafter:create_accessor(electric_output)
     {
         name = "Button",
         label = "Button",
+        block_logic = "Button",
         start_tier = 2,
         end_tier = 2,
         description = {"DataOutput"},
     },
     {
         name = "ToggleButton",
+        block_logic = "ToggleButton",
         label = "Toggle Button",
         start_tier = 2,
         end_tier = 2,

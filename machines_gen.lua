@@ -123,18 +123,24 @@ function register_machines()
                 --block.block_logic = machine.name .. "BlockLogic"
                 --block.replace_tag = machine.name
                 
-                local logic
                 if machine.block_logic then
-                    logic = BlockLogic.reg_derived(block_name, Class.find(machine.block_logic))
-                else
-                    logic = BlockLogic.reg_derived(block_name, Class.find(machine.name))
+                    local logic = BlockLogic.reg_derived(block_name, Class.find(machine.block_logic))
+                    block.logic = logic
                 end
 
-                logic.tier = tier
-                logic.level = level
-                logic.recipes = RecipeDictionary.find(machine.recipes or machine.name)
+                if machine.logic then 
+                    local logic = machine.logic.reg(block_name)
 
-                block.logic = logic
+                    --logic.tier = tier
+                    --logic.level = level
+    
+                    if machine.recipes then
+                        logic.recipes = RecipeDictionary.find(machine.recipes)
+                    end
+                    block.logic = logic:as_block_logic()
+                end
+
+                
 
                 -- local logic = {
                 --     Recipes = machine.recipes or machine.name,
