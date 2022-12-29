@@ -11,7 +11,7 @@ function register_machines()
                 print("Register machine "..machine.name)
 
                 local image = machine.name
-                if machine.image ~= nil then
+                if machine.image then
                     image = machine.image
                 end
 
@@ -32,18 +32,10 @@ function register_machines()
                 item.image = texture
                 item.category = camel_to_spaces(tier_material[tier + 1])
                 item.page = "Machines"
-                item.logic = Class.find(building_single_logic)
                 item.label_format = Loc.new("machines_label_format", "common")
                 local description_parts = {
                     Loc.new(machine.name, "description_machines")
                 }
-
-                -- local item = {
-                --     logic_json = {
-                --         Block = block_name,
-                --     },
-                --     item_logic = building_single_logic,
-                -- }
 
                 local conv_speed_d = {1.66, 2.5, 3.33, 5, 6.66, 10, 20}
                 local arm_speed_d = {
@@ -55,10 +47,6 @@ function register_machines()
                     1800 / 2,
                     3600 / 2,
                 }
-
-                -- if machine.path_finding then
-                --     item.LogicJson.building_mode = "path_finding"
-                -- end
 
                 if machine.description then
                     for _, ss in pairs(machine.description) do
@@ -85,22 +73,6 @@ function register_machines()
                 end
 
                 item.description_parts = description_parts
-                
-                -- if machine.CustomData then
-                --     local dict = deepcopy(machine.custom_data)
-                --     for key, value in pairs(dict) do
-                --         if string.find(tostring(value), "%Material%") then
-                --             dict[key] = string.gsub(value, "%Material%", tier_material[tier])
-                --         end
-                --         if key == "StorageCapacity" then
-                --             dict[key] = value * 2^level
-                --         end
-                --     end
-                
-                --     for k, v in pairs(dict) do
-                --         logic[k] = v
-                --     end
-                -- end
 
                 -- if machine.BlockCreation then
                 --     logic.BlockCreation = machine.BlockCreation
@@ -114,48 +86,59 @@ function register_machines()
                 --         logic.BlockCreation = string.gsub(logic.BlockCreation, "%Tier%", tostring(tier))
                 --     end
                 -- end
-                
-                --logic.ActorCreation = ""
+
+                -- if machine.path_finding then
+                --     item.LogicJson.building_mode = "path_finding"
+                -- end
 
                 local block = Block.reg(block_name)
                 block.item = item
-                --block.logic_json = logic
-                --block.block_logic = machine.name .. "BlockLogic"
-                --block.replace_tag = machine.name
-                
-                if machine.block_logic then
-                    local logic = BlockLogic.reg_derived(block_name, Class.find(machine.block_logic))
-                    block.logic = logic
-                end
+                local item_logic = BlockBuilder.reg(block_name)
+                item_logic.block = block
+                item.logic, item_logic.item = item_logic, item
 
-                if machine.logic then 
+                block.replace_tag = machine.name
+
+                if machine.logic then
                     local logic = machine.logic.reg(block_name)
 
-                    --logic.tier = tier
-                    --logic.level = level
-    
-                    if machine.recipes then
-                        logic.recipes = RecipeDictionary.find(machine.recipes)
+                    logic.tier, logic.level = tier, level
+
+                    if logic == AutoCrafter or logic == SelectCrafter then
+                        logic.recipe_dictionary = RecipeDictionary.find(machine.name)
                     end
-                    block.logic = logic:as_block_logic()
+
+                    block.logic, logic.block = logic, block
+
+                    if machine.custom_data then
+                        local dict = deepcopy(machine.custom_data)
+                        for k, v in pairs(machine.custom_data) do
+                            if k == "storage_capacity" then
+                                dict[k] = v * 2^level
+                            end
+                        end
+    
+                        for k, v in pairs(dict) do
+                            logic[k] = v
+                        end
+                    end
+
+                    if machine.block_creation then
+                        machine.block_creation(logic)
+                    end
+                else
+                    print("Machine logic is not defined")
                 end
 
-                
-
-                -- local logic = {
-                --     Recipes = machine.recipes or machine.name,
-                --     Tier = tier,
-                --     Level = level,
-                -- }
-                
-                --block.Actor = "/Game/Blocks/" .. machine.name .. "BP." .. machine.name .. "BP_C"
-                
+                block.actor = Class.load("/Game/Blocks/" .. machine["name"] .. "BP." .. machine["name"] .. "BP_C")
                 if machine.selector then
-                    --block.selector = machine.selector
+                    block.selector = Class.load(machine.selector)
+                else
+                    block.selector = block.actor
                 end
-                
-                if machine.positions then
-                    --block.positions = machine.positions
+
+                if machine.sub_blocks then
+                    block.sub_blocks = machine.sub_blocks
                 end
             end
         end

@@ -63,6 +63,12 @@
         "KeyTable",
         "Loc",
         "RecipeDictionary",
-        "AutoCrafter"
+        "AutoCrafter",
+        "BuildingSingleBlockItemLogic",
+        "BaseBuildingItemLogic",
+        "TieredBlockLogic",
+        "BlockBuilder",
+        "Actor",
+        "SelectCrafter"
     ]
 }
