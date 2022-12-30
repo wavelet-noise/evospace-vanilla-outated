@@ -5,10 +5,9 @@ function register_machines()
     for _, machine in pairs(machines) do
         for _, tier in pairs(tiers_numlist) do
             if machine.start_tier <= tier and machine.end_tier >= tier then
-                local item_name = tier_material[tier + 1] .. machine.name
-                local block_name = tier_material[tier + 1] .. machine.name
+                local name = tier_material[tier + 1] .. machine.name
 
-                print("Register machine "..machine.name)
+                print("Register machine "..name)
 
                 local image = machine.name
                 if machine.image then
@@ -23,7 +22,7 @@ function register_machines()
 
                 local level = tier - machine.start_tier
 
-                local item = Item.reg(item_name)
+                local item = Item.get(name)
                 item.max_count = 32
                 item.label_parts = {
                     Loc.new(tier_material[tier + 1], "common"),
@@ -91,22 +90,20 @@ function register_machines()
                 --     item.LogicJson.building_mode = "path_finding"
                 -- end
 
-                local block = Block.reg(block_name)
+                local block = Block.get(name)
                 block.item = item
-                local item_logic = BlockBuilder.reg(block_name)
+                local item_logic = BlockBuilder.get(name)
                 item_logic.block = block
                 item.logic, item_logic.item = item_logic, item
 
                 block.replace_tag = machine.name
 
                 if machine.logic then
-                    local logic = machine.logic.reg(block_name)
+                    local logic = machine.logic.get(name)
 
                     logic.tier, logic.level = tier, level
 
-                    if logic == AutoCrafter or logic == SelectCrafter then
-                        logic.recipe_dictionary = RecipeDictionary.find(machine.name)
-                    end
+                    logic.recipe_dictionary = RecipeDictionary.get(machine.name)
 
                     block.logic, logic.block = logic, block
 
@@ -130,7 +127,7 @@ function register_machines()
                     print("Machine logic is not defined")
                 end
 
-                block.actor = Class.load("/Game/Blocks/" .. machine["name"] .. "BP." .. machine["name"] .. "BP_C")
+                block.actor = Class.load("/Game/Blocks/" .. machine.name .. "BP." .. machine.name .. "BP_C")
                 if machine.selector then
                     block.selector = Class.load(machine.selector)
                 else
@@ -139,6 +136,28 @@ function register_machines()
 
                 if machine.sub_blocks then
                     block.sub_blocks = machine.sub_blocks
+                end
+
+                if machine.unbreakable == nil then
+                    append_recipe(
+                        RecipeDictionary.get("Multitool"),
+                        {
+                            name = name.."Wrenching",
+                            ticks = 20,
+                            input = {
+                                {
+                                    name = name,
+                                    count = 1,
+                                }
+                            },
+                            output = {
+                                {
+                                    name = name,
+                                    count = 1,
+                                }
+                            },
+                        }
+                    )
                 end
             end
         end

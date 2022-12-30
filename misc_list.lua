@@ -1,3 +1,8 @@
+simple_deco = {}
+wooden_misc = {}
+simple_single = {}
+static_mesh_block = {}
+
 simple_blocks = {
     {name = "WoodenPlanks", label = "Wooden Planks", tier = 0},
     {name = "AdminBlocks", label = "Admin Blocks", tier = 0},
@@ -50,5 +55,5 @@ simple_blocks = {
     {name = "PaintGold", label = "Paint Gold", tier = 0},
     {name = "PaintYellow", label = "Paint Yellow", tier = 0},
     {name = "PaintMagenta", label = "Paint Magenta", tier = 0},
-    {name = "PaintCyan", label = "Paint Cyan", tier = 0},
+    {name = "PaintCyan", label = "Paint Cyan", tier = 0}
 }

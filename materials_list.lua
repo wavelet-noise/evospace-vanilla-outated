@@ -1,3 +1,31 @@
+function named_material(name)
+    for _, x in pairs(materials) do
+        if x.name == name then
+            return x
+        end
+    end
+end
+
+function extract_tier(something)
+    if type(something) == "number" then
+        return something
+    end
+
+    if type(something) == "table" and something.tier then
+        return something.tier
+    end
+
+    if type(something) == "string" then
+        for i = 0, 7 do
+            if string.find(something, tier_material[i + 1]) then
+                return i
+            end
+        end
+    end
+
+    return 0
+end
+
 materials = {
     {
         name = "Hand",
@@ -20,7 +48,7 @@ materials = {
         name = "Heat",
         label = "Heat",
         is_abstract = true,
-        unit = "J",
+        -- unit = "J",
         unit_s = "W",
         unit_mul = 1,
     },
@@ -28,7 +56,7 @@ materials = {
         name = "Electricity",
         label = "Electricity",
         is_abstract = true,
-        unit = "J",
+        -- unit = "J",
         unit_s = "W",
         unit_mul = 1,
     },
@@ -36,7 +64,7 @@ materials = {
         name = "Kinetic",
         label = "Kinetic",
         is_abstract = true,
-        unit = "J",
+        -- unit = "J",
         unit_s = "W",
         unit_mul = 1,
     },
@@ -373,7 +401,7 @@ materials = {
         name = "Steam",
         label = "Steam",
         is_gas = true,
-        unit = "J",
+        -- unit = "J",
         unit_mul = 1,
         color = {1, 1, 1},
     },

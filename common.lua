@@ -19,38 +19,6 @@ static_item = "Item"
 
 int32max = 2147483647
 
-quest = "StaticQuest"
-qchapter = "StaticQuestChapter"
-
-static_research = "StaticResearch"
-static_chapter = "StaticChapter"
-static_block = "Block"
-static_surface = "Block"
-static_decoration = "StaticDecoration"
-static_prop = "SmallStaticProp"
-static_big_prop = "BigStaticProp"
-
-block_logic = "BlockLogic"
-slot_logic = "item_logic"
-
-building_cube_logic = "BuildingSurfaceBlockItemLogic"
-building_single_logic = "BuildingSingleBlockItemLogic"
-building_plane_logic = "BuildingPlaneBlockItemLogic"
-building_cover_logic = "BuildingSingleBlockRotatedItemLogic"
-building_decoration_logic = "BuildingDecorationItemLogic"
-building_prop_logic = "BuildingPropItemLogic"
-
-building_brush_slot_logic = "BuildingBrushItemLogic"
-recipe_dictionary = "RecipeDictionary"
-ico_generator = "IcoGenerator"
-
-tesselator = "Tesselator"
-tesselator_cube = "TesselatorCube"
-tesselator_static_mesh = "TesselatorStaticMesh"
-
-item_data = "ItemData"
-prop_list = "PropList"
-
 function camel_to_spaces(name)
     return string.gsub(name, "([a-z])([A-Z])", "%1 %2")
 end
@@ -67,26 +35,45 @@ function deepcopy(obj)
     return res
 end
 
-function append_recipe(recipe)
-    local item_count = 0
-    for _, item in pairs(recipe.Input.Items) do
-        item_count = item_count + item.Count
+function append_recipe(rd, recipe)
+    local rec = Recipe.new()
+    if recipe.name == nil then
+        error("Recipe has no name")
     end
+    rec.name = recipe.name
+    print("Recipe "..recipe.name)
+    for k, v in pairs(recipe) do
+        -- fill inventories
+        if k == "input" or k == "output" then
+            for _, j in pairs(v) do
+                local id = ItemData.new()
+                id.item = Item.get(j.name)
+                id.count = j.count
+                rec[k]:add(id)
+            end
+        else
+            -- fill resource slots
+            if k == "res_input" or k == "res_output" then
+                local id = ItemData.new()
+                id.item = Item.get(v.name)
+                id.count = math.floor(v.count)
+                rec[k] = id
+            else
+                -- other fields
+                if rec[k] then
+                    rec[k] = v
+                end
+            end
+        end
+    end
+    rd:add_recipe(rec)
+end
 
-    local con_recipe = deepcopy(recipe)
-    con_recipe.Ticks = math.max(math.min(item_count * 10, 1200), 20)
-    con_recipe.ResourceInput = {name = "Electricity", Count = 20}
-    table.insert(recipes_constructor, con_recipe)
-
-    local dec_recipe = deepcopy(recipe)
-
-    table.insert(recipes_hand, recipe)
-
-    local output = deepcopy(dec_recipe.Input)
-
-    dec_recipe.Input = deepcopy(dec_recipe.Output)
-    dec_recipe.Ticks = math.max(math.min(item_count * 10, 1200), 20)
-    dec_recipe.ResourceInput = {name = "Electricity", Count = 20}
-    dec_recipe.Output = deepcopy(output)
-    table.insert(recipes_deconstructor, dec_recipe)
+function append_recipe_array(rd, array)
+    local count = 0
+    for _, i in pairs(array) do
+        append_recipe(rd, i)
+        count = count + 1
+    end
+    print(count.." recipes was added to "..rd.name)
 end

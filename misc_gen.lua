@@ -3,15 +3,15 @@ require("misc_list")
 function register_misc()
     for _, one in pairs(simple_blocks) do
 
-        local item = Item.reg(one.name)
+        local item = Item.get(one.name)
         item.image = Texture.find("T_" .. one["name"])
         item.max_count = 999
         item.label_parts = {Loc.new(one["name"], "misc")}
 
-        local tesselator = TesselatorCube.reg(one.name)
+        local tesselator = TesselatorCube.get(one.name)
         tesselator:set_material(Material.load("Materials/" .. one["name"]))
 
-        local block = Block.reg(one.name)
+        local block = Block.get(one.name)
         block.tesselator = tesselator
         block.item = item
 
