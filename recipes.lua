@@ -2933,6 +2933,6 @@ function register_recipes()
         }
     ) do
         local rd = RecipeDictionary.get(pair[1])
-        local count = append_recipe_array(rd, pair[2])
+        append_recipe_array(rd, pair[2])
     end
 end

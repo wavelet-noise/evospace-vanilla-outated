@@ -1,9 +1,9 @@
 {
-  "name": "vanilla",
+  "name": "Vanilla",
   "version": "0.1.0",
   "title": "Evospace Vanilla",
   "author": "wavelet noise",
   "evospace_version": "0.19",
-  "dependencies": {},
+  "dependencies": ["VanillaLib>=0.1.0"],
   "description": "Evospace basic content."
 }

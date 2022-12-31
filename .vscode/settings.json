@@ -53,6 +53,7 @@
         "Recipe",
         "register_recipes",
         "ItemData",
-        "append_recipe_array"
+        "append_recipe_array",
+        "inspect"
     ]
 }
