@@ -73,6 +73,7 @@ function register_machines()
 
                 item.description_parts = description_parts
 
+
                 -- if machine.BlockCreation then
                 --     logic.BlockCreation = machine.BlockCreation
                 --     if string.find(logic.BlockCreation, "%Material%") then
@@ -86,15 +87,17 @@ function register_machines()
                 --     end
                 -- end
 
-                -- if machine.path_finding then
-                --     item.LogicJson.building_mode = "path_finding"
-                -- end
 
                 local block = Block.get(name)
                 block.item = item
                 local item_logic = BlockBuilder.get(name)
                 item_logic.block = block
                 item.logic, item_logic.item = item_logic, item
+                if machine.path_finding then
+                    print("rrrr"..item_logic.mode)
+                    item_logic.mode = BuildingMode.path_finding
+                    print("rrrr"..item_logic.mode)
+                end
 
                 block.replace_tag = machine.name
 
