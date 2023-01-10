@@ -40,7 +40,7 @@ simple_blocks = {
     {name = "GlassBlock", tier = 0},
     {name = "PaintWhite", tier = 0},
     {name = "PaintGray", tier = 0},
-    {name = "PaintBlack",, tier = 0},
+    {name = "PaintBlack", tier = 0},
     {name = "PaintGreen", tier = 0},
     {name = "PaintRed", tier = 0},
     {name = "PaintBlue", tier = 0},

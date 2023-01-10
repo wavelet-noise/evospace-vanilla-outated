@@ -15,6 +15,8 @@ function register_misc()
         block.tesselator = tesselator
         block.item = item
 
+
+
     -- objects_array.append(
     --     {
     --         "class": static_item,
@@ -49,41 +51,18 @@ function register_misc()
     for _, one in pairs(wooden_misc) do
         local item = Item.get(one.name)
         item.image = Texture.find("T_" .. one["name"])
-        item.max_count = 999
+        item.max_count = 32
         item.label_parts = {Loc.new(one["name"], "misc")}
         item.tag = "Decoration"
 
         local block = Block.get(one.name)
         block.actor = Class.load("/Game/Blocks/" .. machine.name .. "BP." .. machine.name .. "BP_C")
-        block.logic = if one.block_logic then _G[block_logic].get(one.name) else BlockLogic.get(one.name) end
+        block.logic = one.block_logic and _G[block_logic].get(one.name) or BlockLogic.get(one.name)
+
+        if one.sub_blocks then
+            block.sub_blocks = one.sub_blocks
+        end
 
         block.item, item.block = item, block
-
-
-        item = {
-            "class": static_item,
-            "name": one["name"],
-            "image": "T_" + one["name"],
-            "logic_json": {"Block": one["name"]},
-            "max_count": 32,
-            "tag": "Decoration",
-            "label_parts": [[one["name"], "misc"]],
-            "item_logic": building_single_logic,
-        }
-
-        objects_array.append(item)
-
-        block = {
-            "name": one["name"],
-            "Item": one["name"],
-            "Actor": "/Game/Blocks/" + one["name"] + "BP." + one["name"] + "BP_C",
-            "BlockLogic": "BlockLogic" if "BlockLogic" not in one else one["BlockLogic"],
-            "class": static_block,
-        }
-
-        if "Positions" in one:
-            block["Positions"] = one["Positions"]
-
-        objects_array.append(block)
     end
 end
