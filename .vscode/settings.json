@@ -54,6 +54,8 @@
         "register_recipes",
         "ItemData",
         "append_recipe_array",
-        "inspect"
+        "inspect",
+        "equipped",
+        "BuildingMode"
     ]
 }

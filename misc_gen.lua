@@ -53,16 +53,16 @@ function register_misc()
         item.image = Texture.find("T_" .. one["name"])
         item.max_count = 32
         item.label_parts = {Loc.new(one["name"], "misc")}
-        item.tag = "Decoration"
+        item.category = "Decoration"
 
         local block = Block.get(one.name)
-        block.actor = Class.load("/Game/Blocks/" .. machine.name .. "BP." .. machine.name .. "BP_C")
-        block.logic = one.block_logic and _G[block_logic].get(one.name) or BlockLogic.get(one.name)
+        block.actor = Class.load("/Game/Blocks/" .. one.name .. "BP." .. one.name .. "BP_C")
+        block.logic = one.block_logic and _G[one.block_logic].get(one.name) or BlockLogic.get(one.name)
 
         if one.sub_blocks then
             block.sub_blocks = one.sub_blocks
         end
 
-        block.item, item.block = item, block
+        block.item = item
     end
 end

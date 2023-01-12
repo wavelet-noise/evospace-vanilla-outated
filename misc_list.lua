@@ -55,7 +55,7 @@ simple_blocks = {
     {name = "PaintCyan", tier = 0}
 }
 
-wooden_misc = [
+wooden_misc = {
     {name = "Chair"},
     {name = "Table", sub_blocks = { Vec3i.new(0, 0, 0), Vec3i.new(-1, 0, 0) }},
     {name = "Rack"},
@@ -71,9 +71,9 @@ wooden_misc = [
         block_logic =  "DoorBlockLogic",
     },
     {name = "Window", sub_blocks = { Vec3i.new(0, 0, 0), Vec3i.new(0, 0, 1) }},
-]
+}
 
-simple_single = [
+simple_single = {
     {
         name = "CeramicRoof",
     },
@@ -96,7 +96,7 @@ simple_single = [
         name = "Fence",
         block_logic =  "FenceBlockLogic",
     },
-]
+}
 
 -- ,{
 -- 		name = "Campfire",
@@ -116,7 +116,7 @@ simple_single = [
 -- 		tier = 0
 -- 	}
 
-simple_deco = [
+simple_deco = {
     {name = "Firefly"},
     {name = "Flies"},
     {name = "Birds"},
@@ -125,11 +125,11 @@ simple_deco = [
     {name = "Butterfly"},
     {name = "Leafes"},
     {name = "Bugs"},
-]
+}
 
-static_mesh_block = [{name = "Column"}, {name = "FluetedColumn"}]
+static_mesh_block = {{name = "Column"}, {name = "FluetedColumn"}}
 
-equipped = [
+equipped = {
     {name = "Torch", item_logic = "Equipped/TorchBP.TorchBP_C"},
     {name = "Flashlight", item_logic = "Equipped/FlashlightBP.FlashlightBP_C"},
     {name = "NightVision", item_logic = "Equipped/NightVisionBP.NightVisionBP_C"},
@@ -148,4 +148,4 @@ equipped = [
         item_logic =  "Equipped/AntigravityUnitBP.AntigravityUnitBP_C",
     },
     {name = "Scanner", item_logic = "Equipped/ScannerBP.ScannerBP_C"},
-]
+}
