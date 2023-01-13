@@ -138,7 +138,7 @@ machines = {
         start_tier = 2,
         end_tier = 10,
         common_text_keys = {"Autocrafter"},
-        block_logic = "NuclearReactor",
+        logic = FissionReactor,
         block_creation = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")
@@ -561,10 +561,9 @@ machines = {
     {
         name = "Pump",
         label = "Pump",
-        block_logic = "Pump",
+        logic = Pump,
         start_tier = 1,
         end_tier = 10,
-        custom_data = {item_portion = 1000},
         tag = "Logistics",
         selector = "/Game/Blocks/ArrowBP.ArrowBP_C",
         description = {"FluidInput", "FluidOutput"}
@@ -572,10 +571,9 @@ machines = {
     {
         name = "FilteringPump",
         label = "Filtering Pump",
-        block_logic = "FilteringPump",
+        logic = FilteringPump,
         start_tier = 1,
         end_tier = 10,
-        custom_data = {item_portion = 1000},
         tag = "Logistics",
         selector = "/Game/Blocks/ArrowBP.ArrowBP_C",
         description = {"Sorter", "FluidInput", "FluidOutput"}
@@ -2056,7 +2054,7 @@ machines = {
         },
         start_tier = 5,
         end_tier = 10,
-        block_logic = "NuclearReactor",
+        logic = FissionReactor,
         block_creation = function(crafter)
             local heat_output = Class.find("HeatOutputAccessor")
 
@@ -2206,7 +2204,7 @@ machines = {
             Vec3i.new(-3, -3, 3),
             Vec3i.new(-4, -3, 3)
         },
-        block_logic = "FusionReactor",
+        logic = FusionReactor,
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
@@ -2270,7 +2268,7 @@ machines = {
             Vec3i.new(-2, -2, 2),
             Vec3i.new(-3, -2, 2)
         },
-        block_logic = "NuclearReactor",
+        logic = FissionReactor,
         block_creation = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")

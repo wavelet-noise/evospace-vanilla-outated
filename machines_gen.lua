@@ -101,33 +101,32 @@ function register_machines()
 
                 block.replace_tag = machine.name
 
+                local logic_type = TieredBlockLogic
                 if machine.logic then
-                    local logic = machine.logic.get(name)
+                    logic_type = machine.logic
+                end
 
-                    logic.tier, logic.level = tier, level
-
+                local logic = logic_type.get(name)
+                logic.tier, logic.level = tier, level
+                if logic.recipe_dictionary ~= nil then
                     logic.recipe_dictionary = RecipeDictionary.get(machine.name)
-
-                    block.logic, logic.block = logic, block
-
-                    if machine.custom_data then
-                        local dict = deepcopy(machine.custom_data)
-                        for k, v in pairs(machine.custom_data) do
-                            if k == "storage_capacity" then
-                                dict[k] = v * 2^level
-                            end
-                        end
-    
-                        for k, v in pairs(dict) do
-                            logic[k] = v
+                end
+                block.logic, logic.block = logic, block
+                if machine.custom_data then
+                    local dict = deepcopy(machine.custom_data)
+                    for k, v in pairs(machine.custom_data) do
+                        if k == "storage_capacity" then
+                            dict[k] = v * 2^level
                         end
                     end
 
-                    if machine.block_creation then
-                        machine.block_creation(logic)
+                    for k, v in pairs(dict) do
+                        logic[k] = v
                     end
-                else
-                    print("Machine logic is not defined")
+                end
+
+                if machine.block_creation then
+                    machine.block_creation(logic)
                 end
 
                 block.actor = Class.load("/Game/Blocks/" .. machine.name .. "BP." .. machine.name .. "BP_C")

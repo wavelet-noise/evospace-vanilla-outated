@@ -56,6 +56,10 @@
         "append_recipe_array",
         "inspect",
         "equipped",
-        "BuildingMode"
+        "BuildingMode",
+        "FissionReactor",
+        "FusionReactor",
+        "Pump",
+        "FilteringPump"
     ]
 }
