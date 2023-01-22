@@ -92,7 +92,7 @@ machines = {
         label = "Beam",
         start_tier = 1,
         end_tier = 10,
-        block_logic = "BlockLogic",
+        logic = TieredBlock,
         tag = "Decoration",
         description = {"BuildingBlock"}
     },
@@ -101,7 +101,7 @@ machines = {
         label = "Corner",
         start_tier = 1,
         end_tier = 10,
-        block_logic = "BlockLogic",
+        logic = TieredBlock,
         tag = "Decoration",
         description = {"BuildingBlock"}
     },
@@ -168,7 +168,7 @@ machines = {
         label = "Pipe",
         start_tier = 1,
         end_tier = 10,
-        block_logic = "FluidConductor",
+        logic = FluidConductor,
         tag = "Logistics",
         description = {"FluidConductor"},
         path_finding = true
@@ -178,7 +178,7 @@ machines = {
         label = "Heat Pipe",
         start_tier = 1,
         end_tier = 1,
-        block_logic = "HeatConductor",
+        logic = HeatConductor,
         tag = "Logistics",
         description = {"HeatConductor", "HeatStorage"},
         path_finding = true
@@ -188,7 +188,7 @@ machines = {
         label = "Flywheel",
         start_tier = 2,
         end_tier = 2,
-        block_logic = "KineticConductor",
+        logic = KineticConductor,
         tag = "Logistics",
         description = {"KineticConductor", "KineticStorage"},
         path_finding = true
@@ -199,7 +199,7 @@ machines = {
         start_tier = 1,
         end_tier = 10,
         tag = "Decoration",
-        block_logic = "BlockLogic",
+        logic = TieredBlock,
         description = {"BuildingBlock"}
     },
     {
@@ -208,7 +208,7 @@ machines = {
         tag = "Decoration",
         start_tier = 0,
         end_tier = 10,
-        block_logic = "Sign"
+        logic = SignBlock
     },
     {
         name = "AdvancedSign",
@@ -216,21 +216,21 @@ machines = {
         tag = "Decoration",
         start_tier = 2,
         end_tier = 10,
-        block_logic = "Sign"
+        logic = SignBlock
     },
     {
         name = "Connector",
         label = "Cable",
         start_tier = 1,
         end_tier = 1,
-        block_logic = "ElectricConductor",
+        logic = ElectricConductor,
         tag = "Logistics",
         path_finding = true
     },
     {
         name = "Chest",
         label = "Chest",
-        block_logic = "Chest",
+        logic = Chest,
         start_tier = 0,
         end_tier = 10,
         tag = "Logistics"
@@ -244,7 +244,7 @@ machines = {
             Vec3i.new(0, 0, 1),
             Vec3i.new(-1, 0, 1)
         },
-        block_logic = "ItemRack",
+        logic = ItemRack,
         start_tier = 1,
         end_tier = 10,
         tag = "Logistics"
@@ -255,7 +255,7 @@ machines = {
         start_tier = 1,
         end_tier = 1,
         common_text_keys = {"Valve"},
-        block_logic = "FluidSwitch",
+        logic = FluidSwitch,
         tag = "Logistics",
         description = {"FluidConductor"}
     },
@@ -264,7 +264,7 @@ machines = {
         label = "Switch",
         start_tier = 2,
         end_tier = 2,
-        block_logic = "ElectricSwitch",
+        logic = ElectricSwitch,
         tag = "Logistics",
         description = {"ElectricConductor"}
     },
@@ -300,7 +300,7 @@ machines = {
     {
         name = "Conveyor",
         label = "Conveyor",
-        block_logic = "Conveyor",
+        logic = Conveyor,
         start_tier = 1,
         end_tier = 10,
         common_text_keys = {"Conveyor", "Transporter"},
@@ -311,7 +311,7 @@ machines = {
     {
         name = "Splitter",
         label = "Splitter",
-        block_logic = "Splitter",
+        logic = Splitter,
         start_tier = 1,
         end_tier = 10,
         description = {"Splitter"},
@@ -320,7 +320,7 @@ machines = {
     {
         name = "Sorter",
         label = "Sorter",
-        block_logic = "Sorter",
+        logic = Sorter,
         start_tier = 2,
         end_tier = 10,
         description = {"Splitter", "Sorter"},
@@ -331,7 +331,7 @@ machines = {
         label = "Container",
         start_tier = 1,
         end_tier = 10,
-        block_logic = "FluidContainer",
+        logic = FluidContainer,
         tag = "Logistics",
         description = {"FluidConductor", "FluidStorage"}
     },
@@ -542,7 +542,7 @@ machines = {
     {
         name = "RobotArm",
         label = "Robot Arm",
-        block_logic = "RobotArm",
+        logic = RobotArm,
         start_tier = 1,
         end_tier = 10,
         selector = "/Game/Blocks/ArrowBP.ArrowBP_C",
@@ -552,7 +552,7 @@ machines = {
         name = "FilteringRobotArm",
         label = "Filtering Robot Arm",
         start_tier = 1,
-        block_logic = "FilteringRobotArm",
+        logic = FilteringRobotArm,
         end_tier = 10,
         selector = "/Game/Blocks/ArrowBP.ArrowBP_C",
         tag = "Logistics",
@@ -1038,10 +1038,10 @@ machines = {
         end_tier = 10,
         description = {"ElectricConductor", "ElectricStorage"},
         custom_data = {
-            base_force_capacity = 1000000,
-            bonus_force_capacity = 1000000
+            base_capacity = 1000000,
+            bonus_capacity = 1000000
         },
-        block_logic = "BatteryBox"
+        logic = BatteryBox
     },
     {
         name = "SmallBattery",
@@ -1049,10 +1049,10 @@ machines = {
         start_tier = 3,
         end_tier = 10,
         description = {"ElectricConductor", "ElectricStorage"},
-        block_logic = "BatteryBox",
+        logic = BatteryBox,
         custom_data = {
-            base_force_capacity = 100000,
-            bonus_force_capacity = 100000
+            base_capacity = 100000,
+            bonus_capacity = 100000
         }
     },
     {
@@ -1060,7 +1060,7 @@ machines = {
         label = "Portal",
         start_tier = 7,
         end_tier = 10,
-        block_logic = "Portal",
+        logic = Portal,
         sub_blocks = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(-1, 0, 0),
@@ -1338,7 +1338,7 @@ machines = {
     {
         name = "DrillingRig",
         label = "Drilling Rig",
-        block_logic = "DrillingRig",
+        logic = DrillingRig,
         sub_blocks = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(-1, 0, 0),
@@ -1455,7 +1455,7 @@ machines = {
             Vec3i.new(0, -1, 1),
             Vec3i.new(-1, -1, 1)
         },
-        block_logic = "DeconstructorCrafter",
+        logic = DeconstructorCrafter,
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
@@ -1513,7 +1513,7 @@ machines = {
         sub_blocks = {Vec3i.new(0, 0, 0)},
         start_tier = 2,
         end_tier = 2,
-        block_logic = "DumpCrafter",
+        logic = DumpCrafter,
         block_creation = function(crafter)
             local fluid_input = Class.find("FluidInputAccessor")
 
@@ -1534,7 +1534,7 @@ machines = {
         },
         start_tier = 2,
         end_tier = 2,
-        block_logic = "DumpAny",
+        logic = DumpAny,
         description = {"SolidInput"}
     },
     -- ,{
@@ -1549,12 +1549,12 @@ machines = {
         label = "Lamp",
         start_tier = 1,
         end_tier = 10,
-        block_logic = "Lamp"
+        logic = Lamp
     },
     {
         name = "AdminElectricGenerator",
         label = "Creative Electric Generator",
-        block_logic = "AdminElectricGenerator",
+        logic = AdminElectricGenerator,
         start_tier = 7,
         end_tier = 7,
         craftable = false,
@@ -1563,7 +1563,7 @@ machines = {
     {
         name = "AdminItemGenerator",
         label = "Creative Item Generator",
-        block_logic = "AdminItemGenerator",
+        logic = AdminItemGenerator,
         start_tier = 7,
         end_tier = 7,
         craftable = false,
@@ -1572,7 +1572,7 @@ machines = {
     {
         name = "AdminKineticGenerator",
         label = "Creative Kinetic Generator",
-        block_logic = "AdminKineticGenerator",
+        logic = AdminKineticGenerator,
         start_tier = 7,
         end_tier = 7,
         craftable = false,
@@ -1581,7 +1581,7 @@ machines = {
     {
         name = "AdminHeatGenerator",
         label = "Creative Heat Generator",
-        block_logic = "AdminHeatGenerator",
+        logic = AdminHeatGenerator,
         start_tier = 7,
         end_tier = 7,
         craftable = false,
@@ -1589,7 +1589,7 @@ machines = {
     },
     {
         name = "AdminFluidGenerator",
-        block_logic = "AdminFluidGenerator",
+        logic = AdminFluidGenerator,
         label = "Creative Fluid Generator",
         start_tier = 7,
         end_tier = 7,
@@ -1598,7 +1598,7 @@ machines = {
     },
     {
         name = "AdminExterminator",
-        block_logic = "AdminExterminator",
+        logic = AdminExterminator,
         label = "Creative Exterminator",
         start_tier = 7,
         end_tier = 7,
@@ -1775,7 +1775,7 @@ machines = {
         label = "Terminal",
         start_tier = 4,
         end_tier = 4,
-        block_logic = "Monitor"
+        logic = Monitor
     },
     {
         name = "BigTerminal",
@@ -1789,7 +1789,7 @@ machines = {
             Vec3i.new(0, 0, 1),
             Vec3i.new(0, -1, 1)
         },
-        block_logic = "Monitor"
+        logic = Monitor
     },
     {
         name = "HugeTerminal",
@@ -1808,14 +1808,14 @@ machines = {
             Vec3i.new(0, -1, 2),
             Vec3i.new(0, -2, 2)
         },
-        block_logic = "Monitor"
+        logic = Monitor
     },
     {
         name = "FlatTerminal",
         label = "Flat Terminal",
         start_tier = 4,
         end_tier = 4,
-        block_logic = "Monitor"
+        logic = Monitor
     },
     {
         name = "BigFlatTerminal",
@@ -1829,7 +1829,7 @@ machines = {
             Vec3i.new(0, 0, 1),
             Vec3i.new(0, -1, 1)
         },
-        block_logic = "Monitor"
+        logic = Monitor
     },
     {
         name = "HugeFlatTerminal",
@@ -1848,14 +1848,14 @@ machines = {
             Vec3i.new(0, -1, 2),
             Vec3i.new(0, -2, 2)
         },
-        block_logic = "Monitor"
+        logic = Monitor
     },
     {
         name = "Computer",
         label = "Computer",
         start_tier = 1,
         end_tier = 10,
-        block_logic = "Computer",
+        logic = Computer,
         description = {"ElectricInput"}
     },
     {
@@ -1863,7 +1863,7 @@ machines = {
         label = "Quantum Computer",
         start_tier = 5,
         end_tier = 10,
-        block_logic = "QuantumComputer",
+        logic = QuantumComputer,
         description = {"ElectricInput"},
         sub_blocks = {
             Vec3i.new(0, 0, 0),
@@ -1939,7 +1939,7 @@ machines = {
     {
         name = "Diode",
         label = "Diode",
-        block_logic = "Diode",
+        logic = Diode,
         start_tier = 2,
         end_tier = 10,
         description = {"ElectricInput", "ElectricOutput"}
@@ -2353,7 +2353,7 @@ machines = {
     {
         name = "Pumpjack",
         label = "Pumpjack",
-        block_logic = "Pumpjack",
+        logic = Pumpjack,
         sub_blocks = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(-1, 0, 0),
@@ -2606,7 +2606,7 @@ machines = {
     {
         name = "CreativeController",
         label = "Creative Controller",
-        block_logic = "CreativeController",
+        logic = CreativeController,
         start_tier = 7,
         end_tier = 7,
         description = {"DataInput", "DataOutput"}
@@ -2614,7 +2614,7 @@ machines = {
     {
         name = "LogicCircuit",
         label = "Logic Circuit",
-        block_logic = "LogicCircuit",
+        logic = LogicCircuit,
         start_tier = 2,
         end_tier = 2,
         description = {"DataInput", "DataOutput"}
@@ -2622,14 +2622,14 @@ machines = {
     {
         name = "LogicInterface",
         label = "Logic Interface",
-        block_logic = "LogicInterface",
+        logic = LogicInterface,
         start_tier = 2,
         end_tier = 2,
         description = {"DataOutput"}
     },
     {
         name = "LogicController",
-        block_logic = "LogicController",
+        logic = LogicController,
         label = "Logic Controller",
         start_tier = 2,
         end_tier = 2,
@@ -2637,7 +2637,7 @@ machines = {
     },
     {
         name = "LogicDisplay",
-        block_logic = "LogicDisplay",
+        logic = LogicDisplay,
         label = "Logic Display",
         start_tier = 2,
         end_tier = 2,
@@ -2646,7 +2646,7 @@ machines = {
     {
         name = "LogicWire",
         label = "Logic Wire",
-        block_logic = "DataConductor",
+        logic = DataConductor,
         start_tier = 2,
         end_tier = 2,
         description = {"DataConductor"}
@@ -2654,14 +2654,14 @@ machines = {
     {
         name = "Button",
         label = "Button",
-        block_logic = "Button",
+        logic = Button,
         start_tier = 2,
         end_tier = 2,
         description = {"DataOutput"}
     },
     {
         name = "ToggleButton",
-        block_logic = "ToggleButton",
+        logic = ToggleButton,
         label = "Toggle Button",
         start_tier = 2,
         end_tier = 2,

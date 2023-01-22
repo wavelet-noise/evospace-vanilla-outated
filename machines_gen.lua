@@ -94,16 +94,16 @@ function register_machines()
                 item_logic.block = block
                 item.logic, item_logic.item = item_logic, item
                 if machine.path_finding then
-                    print("rrrr"..item_logic.mode)
                     item_logic.mode = BuildingMode.path_finding
-                    print("rrrr"..item_logic.mode)
                 end
 
                 block.replace_tag = machine.name
 
-                local logic_type = TieredBlockLogic
+                local logic_type
                 if machine.logic then
                     logic_type = machine.logic
+                else
+                    error("No type")
                 end
 
                 local logic = logic_type.get(name)
