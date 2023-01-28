@@ -105,7 +105,7 @@ function register_machines()
                 else
                     error("No type")
                 end
-
+                
                 local logic = logic_type.get(name)
                 logic.tier, logic.level = tier, level
                 if logic.recipe_dictionary ~= nil then

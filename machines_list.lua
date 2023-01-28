@@ -219,7 +219,7 @@ machines = {
         logic = SignBlock
     },
     {
-        name = "Connector",
+        name = "Cable",
         label = "Cable",
         start_tier = 1,
         end_tier = 1,
@@ -250,7 +250,7 @@ machines = {
         tag = "Logistics"
     },
     {
-        name = "Vent",
+        name = "Valve",
         label = "Valve",
         start_tier = 1,
         end_tier = 1,
@@ -260,7 +260,7 @@ machines = {
         description = {"FluidConductor"}
     },
     {
-        name = "ElectricalSwitch",
+        name = "Switch",
         label = "Switch",
         start_tier = 2,
         end_tier = 2,
