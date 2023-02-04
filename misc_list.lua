@@ -62,13 +62,13 @@ wooden_misc = {
     {
         name = "Bed",
         sub_blocks = { Vec3i.new(0, 0, 0), Vec3i.new(-1, 0, 0) },
-        block_logic =  "BedBlockLogic",
+        block_logic =  BedLogic,
     },
     {name = "Ladder"},
     {
         name = "Door",
         sub_blocks = { Vec3i.new(0, 0, 0), Vec3i.new(0, 0, 1) },
-        block_logic =  "DoorBlockLogic",
+        block_logic =  DoorLogic,
     },
     {name = "Window", sub_blocks = { Vec3i.new(0, 0, 0), Vec3i.new(0, 0, 1) }},
 }
@@ -94,7 +94,7 @@ simple_single = {
     {name = "StainlessSteelFence", block_logic =  "FenceBlockLogic", tier = 2},
     {
         name = "Fence",
-        block_logic =  "FenceBlockLogic",
+        block_logic =  FenceLogic,
     },
 }
 

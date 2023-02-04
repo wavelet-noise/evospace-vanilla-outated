@@ -83,6 +83,11 @@
         "DumpCrafter",
         "Monitor",
         "Computer",
-        "QuantumComputer"
+        "QuantumComputer",
+        "LuaBlock",
+        "LampLogic",
+        "BedLogic",
+        "DoorLogic",
+        "FenceLogic"
     ]
 }

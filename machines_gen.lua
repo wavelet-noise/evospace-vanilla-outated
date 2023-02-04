@@ -125,6 +125,11 @@ function register_machines()
                     end
                 end
 
+                if machine.tick then
+                    logic.self_static["tick"] = machine.tick
+                    print("Custom tick function is registered")
+                end
+
                 if machine.block_creation then
                     machine.block_creation(logic)
                 end

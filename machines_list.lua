@@ -1549,16 +1549,19 @@ machines = {
         label = "Lamp",
         start_tier = 1,
         end_tier = 10,
-        logic = Lamp
+        logic = LampLogic
     },
     {
         name = "AdminElectricGenerator",
         label = "Creative Electric Generator",
-        logic = AdminElectricGenerator,
+        logic = LuaBlock,
         start_tier = 7,
         end_tier = 7,
         craftable = false,
-        description = {"ElectricOutput"}
+        description = {"ElectricOutput"},
+        tick = function(self, self_static)
+            print(123)
+        end
     },
     {
         name = "AdminItemGenerator",
