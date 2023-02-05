@@ -21,6 +21,10 @@ local function fill_from_material(item, material)
     if material.description_parts then
         item.description_parts = material.description_parts
     end
+
+    if material.craftable then
+        item.craftable = material.craftable
+    end
 end
 
 function register_materials()
@@ -140,6 +144,74 @@ function register_materials()
             -- )
 
             fill_from_material(item, material)
+        end
+
+        -- exact
+        if material.is_exact then
+            local item = Item.get(material.name)
+            item.image = Texture.find("T_"..material.name)
+            item.max_count = 1
+            item.page = "Misc"
+            item.label_parts = {Loc.new(material["name"], "parts")}
+
+            fill_from_material(item, material)
+
+            -- if "Mesh" in material:
+            --     item["Mesh"] = material["Mesh"]
+            --     item["Materials"] = ["Materials/" + material["name"]]
+
+            -- if "Materials" in material:
+            --     item["Materials"] = material["Materials"]
+
+            if material.burnable then
+                local recipes = RecipeDictionary.get("Furnace")
+                append_recipe(recipes, {
+                    name = material.name.."Burning",
+                    input = {{name = material.name, count = 1}},
+                    -- output = {{name = "AshDust", count = material.burnable.total_ash}},
+                    res_output = {name = "Heat", count = material.burnable.heat_per_tick},
+                    ticks = material.burnable.burn_time
+                })
+
+                item:append_description(Loc.new_param("burnable", "common", material.burnable.burn_time * material.burnable.heat_per_tick))
+                item:append_description(Loc.new_param("power_output", "common", material.burnable.heat_per_tick*20))
+            end
+        end
+
+        -- dust
+        if material.is_dust then
+            local item = Item.get(material.name.."Dust")
+            item.image = IcoGenerator.combine(
+                Texture.find("T_Dust"),
+                Texture.find("T_" .. material.name),
+                {Texture.find("T_DustAdditive")}
+            )
+            item.max_count = 32
+            item.page = "Misc"
+            item.label_parts = {Loc.new(material["name"].."Dust", "parts")}
+
+            fill_from_material(item, material)
+
+            -- if "Mesh" in material:
+            --     item["Mesh"] = material["Mesh"]
+            --     item["Materials"] = ["Materials/" + material["name"]]
+
+            -- if "Materials" in material:
+            --     item["Materials"] = material["Materials"]
+
+            if material.burnable then
+                local recipes = RecipeDictionary.get("Furnace")
+                append_recipe(recipes, {
+                    name = material.name.."DustBurning",
+                    input = {{name = material.name .. "Dust", count = 1}},
+                    -- output = {{name = "AshDust", count = material.burnable.total_ash}},
+                    res_output = {name = "Heat", count = material.burnable.heat_per_tick},
+                    ticks = material.burnable.burn_time
+                })
+
+                item:append_description(Loc.new_param("burnable", "common", material.burnable.burn_time * material.burnable.heat_per_tick))
+                item:append_description(Loc.new_param("power_output", "common", material.burnable.heat_per_tick*20))
+            end
         end
     end
 end

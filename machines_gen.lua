@@ -109,8 +109,15 @@ function register_machines()
 
                 local logic = _G[logic_type].get(name)
                 logic.tier, logic.level = tier, level
-                if logic.recipe_dictionary ~= nil then
-                    logic.recipe_dictionary = RecipeDictionary.get(machine.name)
+                if CrafterBase.cast(logic) ~= nil then
+                    local rd
+                    if machine.recipe_dictionary then
+                        rd = RecipeDictionary.get(machine.recipe_dictionary)
+                    else
+                        rd = RecipeDictionary.get(machine.name)
+                    end
+                    logic.recipe_dictionary = rd
+                    rd:add_used_in(item)
                 end
                 block.logic, logic.block = logic, block
                 if machine.custom_data then

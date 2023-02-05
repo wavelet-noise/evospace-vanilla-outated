@@ -2653,21 +2653,22 @@ machines = {
         start_tier = 2,
         end_tier = 2,
         description = {"DataConductor"}
-    },
-    {
-        name = "Button",
-        label = "Button",
-        logic = "Button",
-        start_tier = 2,
-        end_tier = 2,
-        description = {"DataOutput"}
-    },
-    {
-        name = "ToggleButton",
-        logic = "ToggleButton",
-        label = "Toggle Button",
-        start_tier = 2,
-        end_tier = 2,
-        description = {"DataOutput"}
     }
+    --,
+    -- {
+    --     name = "Button",
+    --     label = "Button",
+    --     logic = "Button",
+    --     start_tier = 2,
+    --     end_tier = 2,
+    --     description = {"DataOutput"}
+    -- },
+    -- {
+    --     name = "ToggleButton",
+    --     logic = "ToggleButton",
+    --     label = "Toggle Button",
+    --     start_tier = 2,
+    --     end_tier = 2,
+    --     description = {"DataOutput"}
+    -- }
 }

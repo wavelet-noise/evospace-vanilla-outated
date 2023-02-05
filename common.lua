@@ -59,9 +59,13 @@ function append_recipe(rd, recipe)
                 id.count = math.floor(v.count)
                 rec[k] = id
             else
-                -- other fields
-                if rec[k] then
-                    rec[k] = v
+                if k == "ticks" then
+                    rec[k] = math.floor(v)
+                else
+                    -- other fields
+                    if rec[k] then
+                        rec[k] = v
+                    end
                 end
             end
         end
