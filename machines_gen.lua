@@ -127,7 +127,7 @@ function register_machines()
                 end
 
                 if machine.tick then
-                    logic.self_static["tick"] = machine.tick
+                    logic.tick_static = machine.tick
                     print("Custom tick function is registered")
                 end
 

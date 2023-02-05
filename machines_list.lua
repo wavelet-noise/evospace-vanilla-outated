@@ -2207,7 +2207,7 @@ machines = {
             Vec3i.new(-3, -3, 3),
             Vec3i.new(-4, -3, 3)
         },
-        logic = FusionReactor,
+        logic = "FusionReactor",
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
