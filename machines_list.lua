@@ -1559,8 +1559,8 @@ machines = {
         end_tier = 7,
         craftable = false,
         description = {"ElectricOutput"},
-        tick = function(self, self_static)
-            print(123)
+        tick = function(self_static, instance)
+            -- print(self_static.value)
         end
     },
     {

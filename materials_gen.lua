@@ -188,6 +188,7 @@ function register_materials()
             )
             item.max_count = 32
             item.page = "Misc"
+            item.category = "Dust"
             item.label_parts = {Loc.new(material["name"].."Dust", "parts")}
 
             fill_from_material(item, material)
