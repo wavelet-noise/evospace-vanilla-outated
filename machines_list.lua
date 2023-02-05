@@ -4,7 +4,7 @@ machines = {
         label = "Macerator",
         start_tier = 1,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -19,7 +19,7 @@ machines = {
         label = "Cutting Machine",
         start_tier = 1,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -46,7 +46,7 @@ machines = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(0, 0, 1)
         },
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
@@ -62,7 +62,7 @@ machines = {
         label = "Chemical Reactor",
         start_tier = 2,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
@@ -77,7 +77,7 @@ machines = {
         label = "Separator",
         start_tier = 2,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -92,7 +92,7 @@ machines = {
         label = "Beam",
         start_tier = 1,
         end_tier = 10,
-        logic = TieredBlock,
+        logic = "TieredBlock",
         tag = "Decoration",
         description = {"BuildingBlock"}
     },
@@ -101,7 +101,7 @@ machines = {
         label = "Corner",
         start_tier = 1,
         end_tier = 10,
-        logic = TieredBlock,
+        logic = "TieredBlock",
         tag = "Decoration",
         description = {"BuildingBlock"}
     },
@@ -114,7 +114,7 @@ machines = {
         },
         start_tier = 1,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -137,8 +137,8 @@ machines = {
         label = "Boiler",
         start_tier = 2,
         end_tier = 10,
-        common_text_keys = {"Autocrafter"},
-        logic = FissionReactor,
+        common_text_keys = {"AutoCrafter"},
+        logic = "FissionReactor",
         block_creation = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")
@@ -168,7 +168,7 @@ machines = {
         label = "Pipe",
         start_tier = 1,
         end_tier = 10,
-        logic = FluidConductor,
+        logic = "FluidConductor",
         tag = "Logistics",
         description = {"FluidConductor"},
         path_finding = true
@@ -178,7 +178,7 @@ machines = {
         label = "Heat Pipe",
         start_tier = 1,
         end_tier = 1,
-        logic = HeatConductor,
+        logic = "HeatConductor",
         tag = "Logistics",
         description = {"HeatConductor", "HeatStorage"},
         path_finding = true
@@ -188,7 +188,7 @@ machines = {
         label = "Flywheel",
         start_tier = 2,
         end_tier = 2,
-        logic = KineticConductor,
+        logic = "KineticConductor",
         tag = "Logistics",
         description = {"KineticConductor", "KineticStorage"},
         path_finding = true
@@ -199,7 +199,7 @@ machines = {
         start_tier = 1,
         end_tier = 10,
         tag = "Decoration",
-        logic = TieredBlock,
+        logic = "TieredBlock",
         description = {"BuildingBlock"}
     },
     {
@@ -208,7 +208,7 @@ machines = {
         tag = "Decoration",
         start_tier = 0,
         end_tier = 10,
-        logic = SignBlock
+        logic = "SignBlock"
     },
     {
         name = "AdvancedSign",
@@ -216,21 +216,21 @@ machines = {
         tag = "Decoration",
         start_tier = 2,
         end_tier = 10,
-        logic = SignBlock
+        logic = "SignBlock"
     },
     {
         name = "Cable",
         label = "Cable",
         start_tier = 1,
         end_tier = 1,
-        logic = ElectricConductor,
+        logic = "ElectricConductor",
         tag = "Logistics",
         path_finding = true
     },
     {
         name = "Chest",
         label = "Chest",
-        logic = Chest,
+        logic = "Chest",
         start_tier = 0,
         end_tier = 10,
         tag = "Logistics"
@@ -244,7 +244,7 @@ machines = {
             Vec3i.new(0, 0, 1),
             Vec3i.new(-1, 0, 1)
         },
-        logic = ItemRack,
+        logic = "ItemRack",
         start_tier = 1,
         end_tier = 10,
         tag = "Logistics"
@@ -255,7 +255,7 @@ machines = {
         start_tier = 1,
         end_tier = 1,
         common_text_keys = {"Valve"},
-        logic = FluidSwitch,
+        logic = "FluidSwitch",
         tag = "Logistics",
         description = {"FluidConductor"}
     },
@@ -264,7 +264,7 @@ machines = {
         label = "Switch",
         start_tier = 2,
         end_tier = 2,
-        logic = ElectricSwitch,
+        logic = "ElectricSwitch",
         tag = "Logistics",
         description = {"ElectricConductor"}
     },
@@ -287,7 +287,7 @@ machines = {
         },
         start_tier = 2,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -300,7 +300,7 @@ machines = {
     {
         name = "Conveyor",
         label = "Conveyor",
-        logic = Conveyor,
+        logic = "Conveyor",
         start_tier = 1,
         end_tier = 10,
         common_text_keys = {"Conveyor", "Transporter"},
@@ -311,7 +311,7 @@ machines = {
     {
         name = "Splitter",
         label = "Splitter",
-        logic = Splitter,
+        logic = "Splitter",
         start_tier = 1,
         end_tier = 10,
         description = {"Splitter"},
@@ -320,7 +320,7 @@ machines = {
     {
         name = "Sorter",
         label = "Sorter",
-        logic = Sorter,
+        logic = "Sorter",
         start_tier = 2,
         end_tier = 10,
         description = {"Splitter", "Sorter"},
@@ -331,7 +331,7 @@ machines = {
         label = "Container",
         start_tier = 1,
         end_tier = 10,
-        logic = FluidContainer,
+        logic = "FluidContainer",
         tag = "Logistics",
         description = {"FluidConductor", "FluidStorage"}
     },
@@ -340,8 +340,8 @@ machines = {
         label = "Press",
         start_tier = 2,
         end_tier = 10,
-        common_text_keys = {"Press", "Autocrafter"},
-        logic = SelectCrafter,
+        common_text_keys = {"Press", "AutoCrafter"},
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -356,9 +356,9 @@ machines = {
     -- 	start_tier = 2,
     -- 	end_tier = 10,
     -- 	common_text_keys =[
-    -- 		"Autocrafter"
+    -- 		"AutoCrafter"
     -- 	],
-    -- 	block_logic ="SelectCrafter",
+    -- 	block_logic =""SelectCrafter"",
     -- 	block_creation ="""
     -- 	local crafter = current_block_logic()
     --
@@ -377,7 +377,7 @@ machines = {
         label = "Stirling Engine",
         start_tier = 1,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
             local kinetic_output = Class.find("KineticOutputAccessor")
@@ -396,7 +396,7 @@ machines = {
     {
         name = "CombustionEngine",
         label = "Combustion Engine",
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         start_tier = 2,
         end_tier = 10,
         description = {"FluidInput", "KineticOutput"}
@@ -413,7 +413,7 @@ machines = {
         },
         start_tier = 3,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
 
@@ -438,7 +438,7 @@ machines = {
         },
         start_tier = 2,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
             local electric_output = Class.find("ElectricOutputAccessor")
@@ -459,7 +459,7 @@ machines = {
         label = "Compact Generator",
         start_tier = 1,
         end_tier = 1,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
             local electric_output = Class.find("ElectricOutputAccessor")
@@ -480,7 +480,7 @@ machines = {
         label = "Electric Engine",
         start_tier = 2,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_output = Class.find("KineticOutputAccessor")
             local electric_input = Class.find("ElectricInputAccessor")
@@ -515,7 +515,7 @@ machines = {
             Vec3i.new(0, 1, 1),
             Vec3i.new(1, 1, 1)
         },
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_output = Class.find("KineticOutputAccessor")
             local electric_input = Class.find("ElectricInputAccessor")
@@ -542,7 +542,7 @@ machines = {
     {
         name = "RobotArm",
         label = "Robot Arm",
-        logic = RobotArm,
+        logic = "RobotArm",
         start_tier = 1,
         end_tier = 10,
         selector = "/Game/Blocks/ArrowBP.ArrowBP_C",
@@ -552,7 +552,7 @@ machines = {
         name = "FilteringRobotArm",
         label = "Filtering Robot Arm",
         start_tier = 1,
-        logic = FilteringRobotArm,
+        logic = "FilteringRobotArm",
         end_tier = 10,
         selector = "/Game/Blocks/ArrowBP.ArrowBP_C",
         tag = "Logistics",
@@ -561,7 +561,7 @@ machines = {
     {
         name = "Pump",
         label = "Pump",
-        logic = Pump,
+        logic = "Pump",
         start_tier = 1,
         end_tier = 10,
         tag = "Logistics",
@@ -571,7 +571,7 @@ machines = {
     {
         name = "FilteringPump",
         label = "Filtering Pump",
-        logic = FilteringPump,
+        logic = "FilteringPump",
         start_tier = 1,
         end_tier = 10,
         tag = "Logistics",
@@ -583,7 +583,7 @@ machines = {
         label = "Smelter",
         start_tier = 0,
         end_tier = 2,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
 
@@ -613,7 +613,7 @@ machines = {
         },
         start_tier = 2,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_output = Class.find("KineticOutputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")
@@ -690,7 +690,7 @@ machines = {
         },
         start_tier = 5,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local fluid_input = Class.find("FluidInputAccessor")
             local electric_output = Class.find("ElectricOutputAccessor")
@@ -729,7 +729,7 @@ machines = {
         },
         start_tier = 4,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local kinetic_output = Class.find("KineticOutputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")
@@ -773,7 +773,7 @@ machines = {
         },
         start_tier = 5,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local heat_output = Class.find("HeatOutputAccessor")
 
@@ -807,7 +807,7 @@ machines = {
         },
         start_tier = 2,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
@@ -832,7 +832,7 @@ machines = {
         },
         start_tier = 3,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -857,7 +857,7 @@ machines = {
         },
         start_tier = 3,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -882,7 +882,7 @@ machines = {
         },
         start_tier = 3,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -897,7 +897,7 @@ machines = {
         label = "Furnace",
         start_tier = 0,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local heat_output = Class.find("HeatOutputAccessor")
 
@@ -941,7 +941,7 @@ machines = {
         },
         start_tier = 1,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         description = {"SpeedBonus"}
     },
     {
@@ -987,7 +987,7 @@ machines = {
         },
         start_tier = 1,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         description = {"SpeedBonus"}
     },
     {
@@ -995,7 +995,7 @@ machines = {
         label = "Fluid Furnace",
         start_tier = 1,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local heat_output = Class.find("HeatOutputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")
@@ -1015,7 +1015,7 @@ machines = {
         label = "Electric Furnace",
         start_tier = 2,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local heat_output = Class.find("HeatOutputAccessor")
             local electric_input = Class.find("ElectricInputAccessor")
@@ -1041,7 +1041,7 @@ machines = {
             base_capacity = 1000000,
             bonus_capacity = 1000000
         },
-        logic = BatteryBox
+        logic = "BatteryBox"
     },
     {
         name = "SmallBattery",
@@ -1049,7 +1049,7 @@ machines = {
         start_tier = 3,
         end_tier = 10,
         description = {"ElectricConductor", "ElectricStorage"},
-        logic = BatteryBox,
+        logic = "BatteryBox",
         custom_data = {
             base_capacity = 100000,
             bonus_capacity = 100000
@@ -1060,7 +1060,7 @@ machines = {
         label = "Portal",
         start_tier = 7,
         end_tier = 10,
-        logic = Portal,
+        logic = "Portal",
         sub_blocks = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(-1, 0, 0),
@@ -1338,7 +1338,7 @@ machines = {
     {
         name = "DrillingRig",
         label = "Drilling Rig",
-        logic = DrillingRig,
+        logic = "DrillingRig",
         sub_blocks = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(-1, 0, 0),
@@ -1405,7 +1405,7 @@ machines = {
             Vec3i.new(0, -1, 1),
             Vec3i.new(-1, -1, 1)
         },
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
@@ -1430,7 +1430,7 @@ machines = {
             Vec3i.new(0, -1, 1),
             Vec3i.new(-1, -1, 1)
         },
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
@@ -1455,7 +1455,7 @@ machines = {
             Vec3i.new(0, -1, 1),
             Vec3i.new(-1, -1, 1)
         },
-        logic = DeconstructorCrafter,
+        logic = "DeconstructorCrafter",
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
@@ -1497,7 +1497,7 @@ machines = {
         },
         start_tier = 1,
         end_tier = 10,
-        logic = AutoCrafter,
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local fluid_input = Class.find("FluidInputAccessor")
 
@@ -1513,7 +1513,7 @@ machines = {
         sub_blocks = {Vec3i.new(0, 0, 0)},
         start_tier = 2,
         end_tier = 2,
-        logic = DumpCrafter,
+        logic = "DumpCrafter",
         block_creation = function(crafter)
             local fluid_input = Class.find("FluidInputAccessor")
 
@@ -1534,7 +1534,7 @@ machines = {
         },
         start_tier = 2,
         end_tier = 2,
-        logic = DumpAny,
+        logic = "DumpAnyCrafter",
         description = {"SolidInput"}
     },
     -- ,{
@@ -1549,12 +1549,12 @@ machines = {
         label = "Lamp",
         start_tier = 1,
         end_tier = 10,
-        logic = LampLogic
+        logic = "LampLogic"
     },
     {
         name = "AdminElectricGenerator",
         label = "Creative Electric Generator",
-        logic = LuaBlock,
+        logic = "LuaBlock",
         start_tier = 7,
         end_tier = 7,
         craftable = false,
@@ -1564,35 +1564,35 @@ machines = {
         end
     },
     {
-        name = "AdminItemGenerator",
+        name = "CreativeItemGenerator",
         label = "Creative Item Generator",
-        logic = AdminItemGenerator,
+        logic = "LuaBlock",
         start_tier = 7,
         end_tier = 7,
         craftable = false,
         description = {"ItemOutput"}
     },
     {
-        name = "AdminKineticGenerator",
+        name = "CreativeKineticGenerator",
         label = "Creative Kinetic Generator",
-        logic = AdminKineticGenerator,
+        logic = "LuaBlock",
         start_tier = 7,
         end_tier = 7,
         craftable = false,
         description = {"KineticOutput"}
     },
     {
-        name = "AdminHeatGenerator",
+        name = "CreativeHeatGenerator",
         label = "Creative Heat Generator",
-        logic = AdminHeatGenerator,
+        logic = "LuaBlock",
         start_tier = 7,
         end_tier = 7,
         craftable = false,
         description = {"HeatOutput"}
     },
     {
-        name = "AdminFluidGenerator",
-        logic = AdminFluidGenerator,
+        name = "CreativeFluidGenerator",
+        logic = "LuaBlock",
         label = "Creative Fluid Generator",
         start_tier = 7,
         end_tier = 7,
@@ -1600,8 +1600,8 @@ machines = {
         description = {"FluidOutput"}
     },
     {
-        name = "AdminExterminator",
-        logic = AdminExterminator,
+        name = "CreativeExterminator",
+        logic = "LuaBlock",
         label = "Creative Exterminator",
         start_tier = 7,
         end_tier = 7,
@@ -1619,7 +1619,7 @@ machines = {
         label = "Electrolyzer",
         start_tier = 2,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local electric_input = Class.find("ElectricInputAccessor")
 
@@ -1640,7 +1640,7 @@ machines = {
             Vec3i.new(0, 0, 1),
             Vec3i.new(-1, 0, 1)
         },
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -1661,7 +1661,7 @@ machines = {
             Vec3i.new(0, 0, 1),
             Vec3i.new(-1, 0, 1)
         },
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")
 
@@ -1726,7 +1726,7 @@ machines = {
         },
         start_tier = 1,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local fluid_input = Class.find("FluidInputAccessor")
 
@@ -1761,7 +1761,7 @@ machines = {
         },
         start_tier = 1,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local a = crafter:create_accessor(Class.find("FluidOutputAccessor"))
             a:set_side_pos(Vec3i.front(), Vec3i.new(0, 0, 0))
@@ -1778,7 +1778,7 @@ machines = {
         label = "Terminal",
         start_tier = 4,
         end_tier = 4,
-        logic = Monitor
+        logic = "Monitor"
     },
     {
         name = "BigTerminal",
@@ -1792,7 +1792,7 @@ machines = {
             Vec3i.new(0, 0, 1),
             Vec3i.new(0, -1, 1)
         },
-        logic = Monitor
+        logic = "Monitor"
     },
     {
         name = "HugeTerminal",
@@ -1811,14 +1811,14 @@ machines = {
             Vec3i.new(0, -1, 2),
             Vec3i.new(0, -2, 2)
         },
-        logic = Monitor
+        logic = "Monitor"
     },
     {
         name = "FlatTerminal",
         label = "Flat Terminal",
         start_tier = 4,
         end_tier = 4,
-        logic = Monitor
+        logic = "Monitor"
     },
     {
         name = "BigFlatTerminal",
@@ -1832,7 +1832,7 @@ machines = {
             Vec3i.new(0, 0, 1),
             Vec3i.new(0, -1, 1)
         },
-        logic = Monitor
+        logic = "Monitor"
     },
     {
         name = "HugeFlatTerminal",
@@ -1851,14 +1851,14 @@ machines = {
             Vec3i.new(0, -1, 2),
             Vec3i.new(0, -2, 2)
         },
-        logic = Monitor
+        logic = "Monitor"
     },
     {
         name = "Computer",
         label = "Computer",
         start_tier = 1,
         end_tier = 10,
-        logic = Computer,
+        logic = "Computer",
         description = {"ElectricInput"}
     },
     {
@@ -1866,7 +1866,7 @@ machines = {
         label = "Quantum Computer",
         start_tier = 5,
         end_tier = 10,
-        logic = QuantumComputer,
+        logic = "QuantumComputer",
         description = {"ElectricInput"},
         sub_blocks = {
             Vec3i.new(0, 0, 0),
@@ -1917,8 +1917,8 @@ machines = {
         },
         start_tier = 3,
         end_tier = 10,
-        common_text_keys = {"Separator", "Autocrafter"},
-        logic = AutoCrafter,
+        common_text_keys = {"Separator", "AutoCrafter"},
+        logic = "AutoCrafter",
         block_creation = function(crafter)
             local a = crafter:create_accessor(Class.find("KineticInputAccessor"))
             a:set_side_pos(Vec3i.back(), Vec3i.new(-1, 1, 0))
@@ -1931,7 +1931,7 @@ machines = {
         label = "Radiator",
         start_tier = 3,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local a = crafter:create_accessor(Class.find("HeatInputAccessor"))
             a:set_side_pos(Vec3i.down(), Vec3i.zero())
@@ -1942,7 +1942,7 @@ machines = {
     {
         name = "Diode",
         label = "Diode",
-        logic = Diode,
+        logic = "Diode",
         start_tier = 2,
         end_tier = 10,
         description = {"ElectricInput", "ElectricOutput"}
@@ -2057,7 +2057,7 @@ machines = {
         },
         start_tier = 5,
         end_tier = 10,
-        logic = FissionReactor,
+        logic = "FissionReactor",
         block_creation = function(crafter)
             local heat_output = Class.find("HeatOutputAccessor")
 
@@ -2271,7 +2271,7 @@ machines = {
             Vec3i.new(-2, -2, 2),
             Vec3i.new(-3, -2, 2)
         },
-        logic = FissionReactor,
+        logic = "FissionReactor",
         block_creation = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")
@@ -2342,7 +2342,7 @@ machines = {
         },
         start_tier = 3,
         end_tier = 10,
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local electric_output = Class.find("ElectricOutputAccessor")
 
@@ -2356,7 +2356,7 @@ machines = {
     {
         name = "Pumpjack",
         label = "Pumpjack",
-        logic = Pumpjack,
+        logic = "Pumpjack",
         sub_blocks = {
             Vec3i.new(0, 0, 0),
             Vec3i.new(-1, 0, 0),
@@ -2457,7 +2457,7 @@ machines = {
     -- 	label = "Heat Exchanger",
     -- 	start_tier = 3,
     -- 	end_tier = 10,
-    -- 	block_logic ="SelectCrafter",
+    -- 	block_logic =""SelectCrafter"",
     -- 	block_creation ="""
     -- 	local crafter = current_block_logic()
     --
@@ -2480,7 +2480,7 @@ machines = {
     -- 	label = "Inverse Heat Exchanger",
     -- 	start_tier = 1,
     -- 	end_tier = 10,
-    -- 	block_logic ="SelectCrafter",
+    -- 	block_logic =""SelectCrafter"",
     -- 	block_creation ="""
     -- 	local crafter = current_block_logic()
     --
@@ -2543,7 +2543,7 @@ machines = {
             Vec3i.new(-1, -1, 2),
             Vec3i.new(-2, -1, 2)
         },
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")
@@ -2590,7 +2590,7 @@ machines = {
             Vec3i.new(0, -1, 0),
             Vec3i.new(-2, -1, 0)
         },
-        logic = SelectCrafter,
+        logic = "SelectCrafter",
         block_creation = function(crafter)
             local heat_output = Class.find("HeatOutputAccessor")
             local electric_input = Class.find("ElectricInputAccessor")
@@ -2606,18 +2606,18 @@ machines = {
         end,
         description = {"ElectricInput", "HeatOutput"}
     },
-    {
-        name = "CreativeController",
-        label = "Creative Controller",
-        logic = CreativeController,
-        start_tier = 7,
-        end_tier = 7,
-        description = {"DataInput", "DataOutput"}
-    },
+    -- {
+    --     name = "CreativeController",
+    --     label = "Creative Controller",
+    --     logic = CreativeController,
+    --     start_tier = 7,
+    --     end_tier = 7,
+    --     description = {"DataInput", "DataOutput"}
+    -- },
     {
         name = "LogicCircuit",
         label = "Logic Circuit",
-        logic = LogicCircuit,
+        logic = "LogicCircuit",
         start_tier = 2,
         end_tier = 2,
         description = {"DataInput", "DataOutput"}
@@ -2625,14 +2625,14 @@ machines = {
     {
         name = "LogicInterface",
         label = "Logic Interface",
-        logic = LogicInterface,
+        logic = "LogicInterface",
         start_tier = 2,
         end_tier = 2,
         description = {"DataOutput"}
     },
     {
         name = "LogicController",
-        logic = LogicController,
+        logic = "LogicController",
         label = "Logic Controller",
         start_tier = 2,
         end_tier = 2,
@@ -2640,7 +2640,7 @@ machines = {
     },
     {
         name = "LogicDisplay",
-        logic = LogicDisplay,
+        logic = "LogicDisplay",
         label = "Logic Display",
         start_tier = 2,
         end_tier = 2,
@@ -2649,7 +2649,7 @@ machines = {
     {
         name = "LogicWire",
         label = "Logic Wire",
-        logic = DataConductor,
+        logic = "DataConductor",
         start_tier = 2,
         end_tier = 2,
         description = {"DataConductor"}
@@ -2657,14 +2657,14 @@ machines = {
     {
         name = "Button",
         label = "Button",
-        logic = Button,
+        logic = "Button",
         start_tier = 2,
         end_tier = 2,
         description = {"DataOutput"}
     },
     {
         name = "ToggleButton",
-        logic = ToggleButton,
+        logic = "ToggleButton",
         label = "Toggle Button",
         start_tier = 2,
         end_tier = 2,

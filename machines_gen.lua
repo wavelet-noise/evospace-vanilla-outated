@@ -102,11 +102,12 @@ function register_machines()
                 local logic_type
                 if machine.logic then
                     logic_type = machine.logic
+                    print(machine.logic.." type to request")
                 else
-                    error("No type")
+                    error("No type to request")
                 end
-                
-                local logic = logic_type.get(name)
+
+                local logic = _G[logic_type].get(name)
                 logic.tier, logic.level = tier, level
                 if logic.recipe_dictionary ~= nil then
                     logic.recipe_dictionary = RecipeDictionary.get(machine.name)

@@ -57,7 +57,9 @@ function register_misc()
 
         local block = Block.get(one.name)
         block.actor = Class.load("/Game/Blocks/" .. one.name .. "BP." .. one.name .. "BP_C")
-        block.logic = one.block_logic and _G[one.block_logic].get(one.name) or BlockLogic.get(one.name)
+        local class_name = one.block_logic and one.block_logic or "BlockLogic"
+        print(class_name)
+        block.logic = _G[class_name].get(one.name)
 
         if one.sub_blocks then
             block.sub_blocks = one.sub_blocks

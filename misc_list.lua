@@ -62,13 +62,13 @@ wooden_misc = {
     {
         name = "Bed",
         sub_blocks = { Vec3i.new(0, 0, 0), Vec3i.new(-1, 0, 0) },
-        block_logic =  BedLogic,
+        block_logic =  "BedLogic",
     },
     {name = "Ladder"},
     {
         name = "Door",
         sub_blocks = { Vec3i.new(0, 0, 0), Vec3i.new(0, 0, 1) },
-        block_logic =  DoorLogic,
+        block_logic =  "DoorLogic",
     },
     {name = "Window", sub_blocks = { Vec3i.new(0, 0, 0), Vec3i.new(0, 0, 1) }},
 }
@@ -145,7 +145,7 @@ equipped = {
     },
     {
         name = "AntigravityUnit",
-        item_logic =  "Equipped/AntigravityUnitBP.AntigravityUnitBP_C",
+        item_logsic =  "Equipped/AntigravityUnitBP.AntigravityUnitBP_C",
     },
     {name = "Scanner", item_logic = "Equipped/ScannerBP.ScannerBP_C"},
 }
