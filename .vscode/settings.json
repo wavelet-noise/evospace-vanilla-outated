@@ -88,6 +88,9 @@
         "LampLogic",
         "BedLogic",
         "DoorLogic",
-        "FenceLogic"
+        "FenceLogic",
+        "FluidOutputAccessor",
+        "SingleSlotInventory",
+        "ElecticOutputAccessor"
     ]
 }

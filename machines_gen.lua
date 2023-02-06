@@ -133,10 +133,21 @@ function register_machines()
                     end
                 end
 
+                local tick_table = table()
                 if machine.tick then
-                    logic.self_static = { tick = machine.tick, value = 333 }
+                    tick_table.tick = machine.tick
                     print("Custom tick function is registered")
                 end
+                if machine.construction then
+                    tick_table.construction = machine.construction
+                    print("Custom construction function is registered")
+                end
+                if machine.proto_construction then
+                    tick_table.proto_construction = machine.proto_construction
+                    print("Custom proto_construction function is registered")
+                end
+
+                logic.self_static = tick_table
 
                 if machine.block_creation then
                     machine.block_creation(logic)

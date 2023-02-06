@@ -1559,9 +1559,29 @@ machines = {
         end_tier = 7,
         craftable = false,
         description = {"ElectricOutput"},
-        tick = function(self_static, instance)
-            -- print(self_static.value)
-        end
+        proto_construction = function(proto)
+            local inventory = SingleSlotInventory.new()
+            proto:add_component(inventory, "Inventory")
+            local sides = {Vec3i.front(), Vec3i.left(), Vec3i.right(). Vec3i.up(), Vec3i.down(), Vec3i.back()}
+            for _, side in pairs(sides) do
+                local acc = ElecticOutputAccessor.new()
+                acc.side, acc.pos = side, Vec3i.zero()
+                acc:bind(inventory)
+                proto:add_accessor(acc)
+            end
+        end,
+
+        construction = function(self, cache)
+            local inventory = SingleSlotInventory.cast(self:get_component("Inventory"))
+            cache.inventory = inventory
+        end,
+
+        tick = function(self, cache)
+            local id = ItemData.new()
+            id.item = Item.get("Electricity")
+            id.count = 100
+            cache.inventory.add_item(ItemData.new())
+        end,
     },
     {
         name = "CreativeItemGenerator",
