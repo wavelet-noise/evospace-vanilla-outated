@@ -1564,10 +1564,10 @@ machines = {
         proto_construction = function(self)
             local inventory = self:add_component(SingleSlotInventory.new(), "Inventory")
             for _, side in pairs(AllSides) do
-                local acc = ElecticOutputAccessor.new()
+                local acc = ElectricOutputAccessor.new()
                 acc.side, acc.pos = side, Vec3i.zero
                 acc:bind(inventory)
-                self:add_accessor(acc)
+                self:add_component(acc)
             end
         end,
 

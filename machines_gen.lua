@@ -7,6 +7,8 @@ function register_machines()
             if machine.start_tier <= tier and machine.end_tier >= tier then
                 local name = tier_material[tier + 1] .. machine.name
 
+                print("")
+                print("----------------")
                 print("Register machine "..name)
 
                 local image = machine.name
@@ -133,21 +135,24 @@ function register_machines()
                     end
                 end
 
-                local tick_table = table()
-                if machine.tick then
-                    tick_table.tick = machine.tick
-                    print("Custom tick function is registered")
-                end
-                if machine.proto_construction then
-                    tick_table.proto_construction = machine.proto_construction
-                    print("Custom proto_construction function is registered")
-                end
-                if machine.proto_clone then
-                    tick_table.proto_clone = machine.proto_clone
-                    print("Custom proto_clone function is registered")
-                end
+                local lua_block = LuaBlock.cast(logic)
+                if lua_block then
+                    local class_cache = {}
+                    if machine.tick then
+                        class_cache.tick = machine.tick
+                        print("Custom tick function is registered")
+                    end
+                    if machine.proto_construction then
+                        class_cache.proto_construction = machine.proto_construction
+                        print("Custom proto_construction function is registered")
+                    end
+                    if machine.proto_clone then
+                        class_cache.proto_clone = machine.proto_clone
+                        print("Custom proto_clone function is registered")
+                    end
 
-                logic.self_static = tick_table
+                    lua_block.class_cache = class_cache
+                end
 
                 if machine.block_creation then
                     machine.block_creation(logic)
