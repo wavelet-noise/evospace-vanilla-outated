@@ -89,8 +89,30 @@
         "BedLogic",
         "DoorLogic",
         "FenceLogic",
-        "FluidOutputAccessor",
         "SingleSlotInventory",
-        "ElecticOutputAccessor"
+
+        "FluidOutputAccessor",
+        "ElectricOutputAccessor",
+        "KineticOutputAccessor",
+        "HeatOutputAccessor",
+        "DataOutputAccessor",
+
+        "FluidInputAccessor",
+        "ElectricInputAccessor",
+        "KineticInputAccessor",
+        "HeatInputAccessor",
+        "DataInputAccessor",
+
+        "FluidConductorAccessor",
+        "ElectricConductorAccessor",
+        "KineticConductorAccessor",
+        "HeatConductorAccessor",
+        "DataConductorAccessor",
+
+        "FluidAccessor",
+        "ElectricAccessor",
+        "KineticAccessor",
+        "HeatAccessor",
+        "DataAccessor",
     ]
 }
