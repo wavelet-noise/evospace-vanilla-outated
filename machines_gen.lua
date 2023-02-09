@@ -138,13 +138,13 @@ function register_machines()
                     tick_table.tick = machine.tick
                     print("Custom tick function is registered")
                 end
-                if machine.construction then
-                    tick_table.construction = machine.construction
-                    print("Custom construction function is registered")
-                end
                 if machine.proto_construction then
                     tick_table.proto_construction = machine.proto_construction
                     print("Custom proto_construction function is registered")
+                end
+                if machine.proto_clone then
+                    tick_table.proto_clone = machine.proto_clone
+                    print("Custom proto_clone function is registered")
                 end
 
                 logic.self_static = tick_table
