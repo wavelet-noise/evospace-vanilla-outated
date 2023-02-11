@@ -15,8 +15,6 @@ fission_fullpower = 7100 * 3.3 * 2 * 1.1 * 2
 
 tiers_numlist = {0, 1, 2, 3, 4, 5, 6, 7}
 
-static_item = "Item"
-
 int32max = 2147483647
 
 function camel_to_spaces(name)
@@ -82,4 +80,7 @@ function append_recipe_array(rd, array)
     print(count.." recipes was added to "..rd.name)
 end
 
-AllSides = {Vec3i.front, Vec3i.left, Vec3i.right. Vec3i.up, Vec3i.down, Vec3i.back}
+
+function all_sides() 
+    return {Vec3i.front, Vec3i.left, Vec3i.right. Vec3i.up, Vec3i.down, Vec3i.back}
+end

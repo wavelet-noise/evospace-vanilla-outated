@@ -1,3 +1,5 @@
+require("common")
+
 machines = {
     {
         name = "Macerator",

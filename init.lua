@@ -3,16 +3,20 @@ require("materials_gen")
 require("misc_gen")
 require("recipes")
 
-function on_mod_pre_init()
-end 
+init = function() 
+    return {
+        pre_init = function() 
+            
+        end,
+        init = function () 
+            register_materials()
+            register_recipes()
+            register_misc()
 
-function on_mod_init()
-    register_materials()
-    register_recipes()
-    register_misc()
-
-    register_machines()
-end
-
-function on_mod_post_init()
+            register_machines()
+        end,
+        post_init = function () 
+            
+        end
+    }
 end

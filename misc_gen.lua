@@ -15,8 +15,6 @@ function register_misc()
         block.tesselator = tesselator
         block.item = item
 
-
-
     -- objects_array.append(
     --     {
     --         "class": static_item,
