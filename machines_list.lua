@@ -1,6 +1,7 @@
 require("common")
 
-machines = {
+function machines() 
+    return {
     {
         name = "Macerator",
         label = "Macerator",
@@ -1565,12 +1566,10 @@ machines = {
         -- self is Prototype object
         proto_construction = function(self)
             local inventory = self:add_component(SingleSlotInventory.new(), "Inventory")
-            for _, side in pairs(AllSides) do
-                local acc = ElectricOutputAccessor.new()
-                acc.side, acc.pos = side, Vec3i.zero
+            local acc = ElectricOutputAccessor.new()
+                acc.side, acc.pos = Vec3i.new(0,0,0), Vec3i.zero
                 acc:bind(inventory)
                 self:add_component(acc)
-            end
         end,
 
         -- self is Prototype object clone, cache is per instance Table to use in tick
@@ -2699,3 +2698,4 @@ machines = {
     --     description = {"DataOutput"}
     -- }
 }
+end

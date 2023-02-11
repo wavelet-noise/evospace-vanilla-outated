@@ -2,6 +2,7 @@ require("common")
 require("machines_list")
 
 function register_machines()
+    local machines = machines()
     for _, machine in pairs(machines) do
         for _, tier in pairs(tiers_numlist) do
             if machine.start_tier <= tier and machine.end_tier >= tier then
