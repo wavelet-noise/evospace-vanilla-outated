@@ -79,6 +79,3 @@ function append_recipe_array(rd, array)
     end
     print(count.." recipes was added to "..rd.name)
 end
-
-
--- all_sides = {Vec3i.front, Vec3i.left, Vec3i.right. Vec3i.up, Vec3i.down, Vec3i.back}

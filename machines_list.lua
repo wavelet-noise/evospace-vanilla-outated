@@ -1,5 +1,43 @@
 require("common")
 
+function CreativeGenerator(class, resource) 
+    return {
+        -- self is Prototype object
+        proto_construction = function(self)
+            local inventory = self:add_component(SingleSlotInventory.new(), "Inventory")
+            for i, side in pairs({Vec3i.front, Vec3i.left, Vec3i.right, Vec3i.up, Vec3i.down, Vec3i.back}) do
+                local acc = _G[class.."OutputAccessor"].new()
+                acc.side, acc.pos = side, Vec3i.zero
+                acc:bind(inventory)
+                self:add_component(acc, class.."OA"..i)
+            end
+        end,
+
+        -- self is Prototype object clone, cache is per instance Table to use in tick
+        proto_clone = function(self, cache)
+            local inventory = SingleSlotInventory.cast(self:get_component("Inventory"))
+            if inventory == nil then
+                error("proto_clone fatal")
+            end
+            cache.inventory = inventory
+            inventory.capacity = 1000000
+
+            local slot = ItemData.new()
+            slot.item = Item.get(resource)
+            slot.count = 100
+
+            cache.slot = slot
+        end,
+
+        --  self is Prototype object clone, cache is per instance Table to use in tick
+        tick = function(self, cache)
+            local inventory = cache.inventory
+            inventory:add(cache.slot)
+            print(inventory:get(0).count)
+        end
+    }
+end
+
 function machines() 
     return {
     {
@@ -142,10 +180,11 @@ function machines()
         end_tier = 10,
         common_text_keys = {"AutoCrafter"},
         logic = "FissionReactor",
-        block_creation = function(crafter)
+        proto_construction = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")
             local fluid_output = Class.find("FluidOutputAccessor")
+            print("sdfsdfsdfsdf"..crafter.name)
 
             local a = crafter:create_accessor(fluid_input)
             a:set_side_pos(Vec3i.back, Vec3i.zero)
@@ -1555,39 +1594,14 @@ function machines()
         logic = "LampLogic"
     },
     {
-        name = "AdminElectricGenerator",
+        name = "CreativeElectricGenerator",
         label = "Creative Electric Generator",
         logic = "LuaBlock",
         start_tier = 7,
         end_tier = 7,
         craftable = false,
         description = {"ElectricOutput"},
-
-        -- self is Prototype object
-        proto_construction = function(self)
-            local inventory = self:add_component(SingleSlotInventory.new(), "Inventory")
-            local acc = ElectricOutputAccessor.new()
-                acc.side, acc.pos = Vec3i.new(0,0,0), Vec3i.zero
-                acc:bind(inventory)
-                self:add_component(acc)
-        end,
-
-        -- self is Prototype object clone, cache is per instance Table to use in tick
-        proto_clone = function(self, cache)
-            local inventory = SingleSlotInventory.cast(self:get_component("Inventory"))
-            cache.inventory = inventory
-
-            local slot = ItemData.new()
-            slot.item = Item.get("Electricity")
-            slot.count = 100
-
-            cache.slot = slot
-        end,
-
-        --  self is Prototype object clone, cache is per instance Table to use in tick
-        tick = function(self, cache)
-            cache.inventory.add_item(cache.slot)
-        end,
+        lua_creative = {"Electric", "Electricity"}
     },
     {
         name = "CreativeItemGenerator",
@@ -1605,7 +1619,8 @@ function machines()
         start_tier = 7,
         end_tier = 7,
         craftable = false,
-        description = {"KineticOutput"}
+        description = {"KineticOutput"},
+        lua_creative = {"Kinetic", "Kinetic"}
     },
     {
         name = "CreativeHeatGenerator",
@@ -1624,6 +1639,8 @@ function machines()
         end_tier = 7,
         craftable = false,
         description = {"FluidOutput"}
+        ,
+        lua_creative = {"Heat", "Heat"}
     },
     {
         name = "CreativeExterminator",

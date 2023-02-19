@@ -150,7 +150,7 @@ function register_materials()
         if material.is_exact then
             local item = Item.get(material.name)
             item.image = Texture.find("T_"..material.name)
-            item.max_count = 1
+            item.max_count = 32
             item.page = "Misc"
             item.label_parts = {Loc.new(material["name"], "parts")}
 

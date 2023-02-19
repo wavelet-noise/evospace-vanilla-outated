@@ -139,13 +139,16 @@ function register_machines()
                 local lua_block = LuaBlock.cast(logic)
                 if lua_block then
                     local class_cache = {}
+                    if machine.lua_creative then 
+                        local result = CreativeGenerator(machine.lua_creative[1], machine.lua_creative[2])
+                        result.proto_construction(logic)
+                        class_cache.tick = result.tick
+                        class_cache.proto_clone = result.proto_clone
+                    end
+
                     if machine.tick then
                         class_cache.tick = machine.tick
                         print("Custom tick function is registered")
-                    end
-                    if machine.proto_construction then
-                        class_cache.proto_construction = machine.proto_construction
-                        print("Custom proto_construction function is registered")
                     end
                     if machine.proto_clone then
                         class_cache.proto_clone = machine.proto_clone
@@ -153,6 +156,10 @@ function register_machines()
                     end
 
                     lua_block.class_cache = class_cache
+                end
+
+                if machine.proto_construction then
+                    machine.proto_construction(logic)
                 end
 
                 if machine.block_creation then
