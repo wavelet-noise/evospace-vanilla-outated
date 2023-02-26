@@ -44,7 +44,7 @@ function append_recipe(rd, recipe)
         -- fill inventories
         if k == "input" or k == "output" then
             for _, j in pairs(v) do
-                local id = ItemData.new()
+                local id = ItemData.new_empty()
                 id.item = Item.get(j.name)
                 id.count = j.count
                 rec[k]:add(id)
@@ -52,7 +52,7 @@ function append_recipe(rd, recipe)
         else
             -- fill resource slots
             if k == "res_input" or k == "res_output" then
-                local id = ItemData.new()
+                local id = ItemData.new_empty()
                 id.item = Item.get(v.name)
                 id.count = math.floor(v.count)
                 rec[k] = id

@@ -35,7 +35,7 @@ function register_materials()
             item.image = Texture.find("T_"..material.name)
             item.max_count = 1
             item.page = "Misc"
-            item.label_parts = {Loc.new(material["name"], "parts")}
+            item:append_label(Loc.new(material["name"], "parts"))
 
             fill_from_material(item, material)
         end
@@ -44,11 +44,19 @@ function register_materials()
             local item = Item.get(material.name .. "Block")
             item.page = "Decoration"
             item.category = "Block"
-            item.image = IcoGenerator.combine(
-                Texture.find("T_" .. "Block"), 
-                Texture.find("T_" .. material.name),
-                {}
-            )
+            local additive = Texture.find("T_BlockAdditive")
+            if additive then
+                item.image = IcoGenerator.combine_mul_add(
+                    Texture.find("T_".."Block"), 
+                    Texture.find("T_"..material.name),
+                    {additive}
+                )
+            else
+                item.image = IcoGenerator.combine_mul(
+                    Texture.find("T_".."Block"), 
+                    Texture.find("T_"..material.name)
+                )
+            end
 
             -- local item = {
             --     class = static_item,
@@ -97,11 +105,20 @@ function register_materials()
         -- ingot
         if material.is_ingot then
             local item = Item.get(material.name .. "Ingot")
-            item.image = IcoGenerator.combine(
-                Texture.find("T_".."Ingot"), 
-                Texture.find("T_"..material.name),
-                {Texture.find("T_IngotAdditive")}
-            )
+            local additive = Texture.find("T_IngotAdditive")
+            if additive then
+                item.image = IcoGenerator.combine_mul_add(
+                    Texture.find("T_".."Ingot"), 
+                    Texture.find("T_"..material.name),
+                    {additive}
+                )
+            else
+                item.image = IcoGenerator.combine_mul(
+                    Texture.find("T_".."Ingot"), 
+                    Texture.find("T_"..material.name)
+                )
+            end
+
             item.max_count = 32
             item.label_parts = { 
                 Loc.new(material["name"].."Ingot", "parts") 
@@ -152,7 +169,7 @@ function register_materials()
             item.image = Texture.find("T_"..material.name)
             item.max_count = 32
             item.page = "Misc"
-            item.label_parts = {Loc.new(material["name"], "parts")}
+            item:append_label(Loc.new(material["name"], "parts"))
 
             fill_from_material(item, material)
 
@@ -181,7 +198,7 @@ function register_materials()
         -- dust
         if material.is_dust then
             local item = Item.get(material.name.."Dust")
-            item.image = IcoGenerator.combine(
+            item.image = IcoGenerator.combine_mul_add(
                 Texture.find("T_Dust"),
                 Texture.find("T_" .. material.name),
                 {Texture.find("T_DustAdditive")}

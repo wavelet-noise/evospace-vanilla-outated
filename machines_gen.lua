@@ -17,11 +17,20 @@ function register_machines()
                     image = machine.image
                 end
 
-                local texture = IcoGenerator.combine(
-                    Texture.find("T_" .. image),
-                    Texture.find("T_" .. tier_material[tier + 1]),
-                    {Texture.find("T_" .. image .. "Additive")}
-                )
+                local texture
+                local additive = Texture.find("T_" .. image .. "Additive")
+                if additive then
+                    texture = IcoGenerator.combine_mul_add(
+                        Texture.find("T_" .. image),
+                        Texture.find("T_" .. tier_material[tier + 1]),
+                        {additive}
+                    )
+                else
+                    texture = IcoGenerator.combine_mul(
+                        Texture.find("T_" .. image),
+                        Texture.find("T_" .. tier_material[tier + 1])
+                    )
+                end
 
                 local level = tier - machine.start_tier
 
