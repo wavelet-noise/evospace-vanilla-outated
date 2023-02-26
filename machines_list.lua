@@ -22,7 +22,7 @@ function CreativeGenerator(class, resource)
             cache.inventory = inventory
             inventory.capacity = 1000000
 
-            local slot = ItemData.new()
+            local slot = ItemData.new_empty()
             slot.item = Item.get(resource)
             slot.count = 100
 
