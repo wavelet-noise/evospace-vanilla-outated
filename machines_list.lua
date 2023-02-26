@@ -21,12 +21,8 @@ function CreativeGenerator(class, resource)
             end
             cache.inventory = inventory
             inventory.capacity = 1000000
-
-            local slot = ItemData.new_empty()
-            slot.item = Item.get(resource)
-            slot.count = 100
-
-            cache.slot = slot
+            
+            cache.slot = ItemData.new(Item.get(resource), 100)
         end,
 
         --  self is Prototype object clone, cache is per instance Table to use in tick
