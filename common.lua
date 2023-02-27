@@ -44,12 +44,12 @@ function append_recipe(rd, recipe)
         -- fill inventories
         if k == "input" or k == "output" then
             for _, j in pairs(v) do
-                rec[k]:add(ItemData.new(Item.get(j.name), j.count))
+                rec[k]:add(ItemData.new(Item.get(j.name), math.floor(j.count)))
             end
         else
             -- fill resource slots
             if k == "res_input" or k == "res_output" then
-                rec[k] = ItemData.new(Item.get(v.name), v.count)
+                rec[k] = ItemData.new(Item.get(v.name), math.floor(v.count))
             else
                 if k == "ticks" then
                     rec[k] = math.floor(v)
