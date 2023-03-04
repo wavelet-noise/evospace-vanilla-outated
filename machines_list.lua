@@ -940,7 +940,7 @@ function machines()
             local heat_output = Class.find("HeatOutputAccessor")
 
             local a = crafter:create_accessor(heat_output)
-            a:set_side_pos(Vec3i.up, Vec3i.zero)
+            a.side, a.pos = Vec3i.up, Vec3i.zero
             a:bind(crafter.output_container)
         end,
         description = {"HeatOutput"}
