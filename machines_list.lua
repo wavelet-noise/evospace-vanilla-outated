@@ -176,7 +176,7 @@ function machines()
         end_tier = 10,
         common_text_keys = {"AutoCrafter"},
         logic = "FissionReactor",
-        proto_construction = function(crafter)
+        block_creation = function(crafter)
             local heat_input = Class.find("HeatInputAccessor")
             local fluid_input = Class.find("FluidInputAccessor")
             local fluid_output = Class.find("FluidOutputAccessor")
@@ -432,6 +432,36 @@ function machines()
         power_output = 10
     },
     {
+        name = "HandGenerator",
+        label = "Hand Generator",
+        start_tier = 1,
+        end_tier = 1,
+        logic = "HandGenerator",
+        description = {"HeatInput", "KineticOutput", "PowerOutput"},
+        power_output = 10
+    },
+    {
+        name = "KineticHeater",
+        label = "Kinetic Heater",
+        start_tier = 1,
+        end_tier = 10,
+        logic = "SelectCrafter",
+        block_creation = function(crafter)
+            local kinetic_input = Class.find("KineticInputAccessor")
+            local heat_output = Class.find("HeatOutputAccessor")
+
+            local a = crafter:create_accessor(kinetic_input)
+            a:set_side_pos(Vec3i.front, Vec3i.zero)
+            a:bind(crafter.input_container)
+
+            local a = crafter:create_accessor(heat_output)
+            a:set_side_pos(Vec3i.back, Vec3i.zero)
+            a:bind(crafter.output_container)
+        end,
+        description = {"HeatInput", "KineticOutput", "PowerOutput"},
+        power_output = 10
+    },
+    {
         name = "CombustionEngine",
         label = "Combustion Engine",
         logic = "AutoCrafter",
@@ -496,7 +526,7 @@ function machines()
         name = "CompactGenerator",
         label = "Compact Generator",
         start_tier = 1,
-        end_tier = 1,
+        end_tier = 10,
         logic = "SelectCrafter",
         block_creation = function(crafter)
             local kinetic_input = Class.find("KineticInputAccessor")

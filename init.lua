@@ -1,7 +1,4 @@
 require("machines_gen")
-require("materials_gen")
-require("misc_gen")
-require("recipes")
 
 init = function() 
     return {
@@ -9,15 +6,11 @@ init = function()
             
         end,
         init = function () 
-            register_materials()
-            register_recipes()
-            register_misc()
-
             register_machines()
 
             local mt = Item.get("CopperMultitool")
             local item_logic = BrushBreaker.get("CopperMultitool")
-            mt.logic = item_logic
+            mt.logic, item_logic.item = item_logic, mt
             item_logic.recipes = RecipeDictionary.get("Multitool")
             item_logic.tier = 2
         end,
