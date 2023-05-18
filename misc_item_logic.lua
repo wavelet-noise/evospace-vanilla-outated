@@ -45,7 +45,7 @@ function register_misc_items()
     for _, block_name in pairs(simple_blocks) do
         local block = Block.get(block_name)
         local item = Item.get(block_name)
-        local item_logic = SurfaceBuilder.get(block_name)
+        local item_logic = PlaneBuilder.get(block_name)
         item_logic.block = block
         item.logic, item_logic.item = item_logic, item
     end
